@@ -2,8 +2,8 @@
 //  LinkHelper.h
 //  LinkBlockProgram
 //
-//  Created by NOVO on 2017/12/13.
-//  Copyright © 2017年 NOVO. All rights reserved.
+//  Created by Meterwhite on 2017/12/13.
+//  Copyright © 2017年 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlockDefine.h"
@@ -15,62 +15,62 @@
 /**
  拆分调用命令
  */
-- (NSArray<NSString*>*)actionCommandSplitFromLinkCode;
+//- (NSArray<NSString*>*)actionCommandSplitFromLinkCode;
 
 /**
  截取函数名
  */
-- (NSString*)functionNameSplitFromFunctionCode;
+//- (NSString*)functionNameSplitFromFunctionCode;
 
 /**
  截取属性明
  */
-- (NSString *)propertyNameFromPropertyCode;
+//- (NSString *)propertyNameFromPropertyCode;
 
 /**
  函数参数拆分；不是函数结构返回nil；否则返回数组；
  */
-- (NSArray<NSString*>*)functionArgumentSplitFromFunctionCallCode;
+//- (NSArray<NSString*>*)functionArgumentSplitFromFunctionCallCode;
 
 
 /**
  *字符串字面量解析并装箱
  *空白和不能识别的内容将会返回nil
  */
-- (NSValue*)valueFromValueCode;
+//- (NSValue*)valueFromValueCode;
 
 /**
  字符串数学表达式计算
  */
-- (NSNumber*)numberEvalFromCode;
+//- (NSNumber*)numberEvalFromCode;
 
 /**
  获取对象的block属性
 
  @param propertyName block属性名称
  */
-- (id)blockPropertyFromObjectByPropertyName:(NSString*)propertyName;
+//- (id)blockPropertyFromObjectByPropertyName:(NSString*)propertyName;
 
 
 /**
  是否是不定参数的linkBlock
  */
-- (BOOL)isIndefiniteParametersLinkBlockName;
+//- (BOOL)isIndefiniteParametersLinkBlockName;
 
 /**
  是否是禁止的调用名称
  */
-- (BOOL)isUnavailableActionName;
+//- (BOOL)isUnavailableActionName;
 
 /**
  是否是硬编码的直接量
  */
-- (BOOL)isCodeLinkBlockEncoded;
+//- (BOOL)isCodeLinkBlockEncoded;
 
 /**
  *硬编码的直接量转为Fundation对象
  */
-- (id)valueFromLinkBlockEncodingCodeAction;
+//- (id)valueFromLinkBlockEncodingCodeAction;
 
 /*
  *LinkBlock编码(硬编码的直接量)
@@ -114,10 +114,10 @@
 + (NSDictionary*)link_block_struct_value_path_set_map;
 
 #pragma mark - 配置
-+ (BOOL)link_block_configuration_get_is_show_warning;
+//+ (BOOL)link_block_configuration_get_is_show_warning;
 
 /**
  运行时是否显示警告
  */
-+ (void)link_block_configuration_set_is_show_warning:(BOOL)b;
+//+ (void)link_block_configuration_set_is_show_warning:(BOOL)b;
 @end

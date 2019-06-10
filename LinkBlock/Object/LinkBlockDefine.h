@@ -2,8 +2,8 @@
 //  LinkBlockDefine.h
 //  LinkBlockProgram
 //
-//  Created by NOVO on 17/3/14.
-//  Copyright © 2017年 NOVO. All rights reserved.
+//  Created by Meterwhite on 17/3/14.
+//  Copyright © 2017年 Meterwhite. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>

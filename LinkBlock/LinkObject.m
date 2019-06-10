@@ -2,17 +2,13 @@
 //  LinkObject.m
 //  LinkBlockProgram
 //
-//  Created by Novo on 2018/10/18.
-//  Copyright © 2018 Novo. All rights reserved.
+//  Created by Meterwhite on 2018/10/18.
+//  Copyright © 2018 Meterwhite. All rights reserved.
 //
 
-#import "LinkBlock.h"
 #import <objc/runtime.h>
-//#import <CoreData/CoreData.h>
-#import "DynamicLink.h"
 #import "LinkHelper.h"
-#import "LinkBlockInvocation.h"
-#import "NSNil.h"
+#import "LinkBlock.h"
 
 @implementation NSObject(LinkObject)
 
@@ -419,78 +415,6 @@
 {
     return self.linkIf_YES;
 }
-
-
-- (NSObject *(^)(NSString *, ...))linkEvalCode
-{
-    return ^id(NSString* code, ...){
-        LinkHandle_REF(NSObject)
-        
-        ///////////////////////
-        //LinkGroupHandle_REF
-        if([self isKindOfClass:[LinkGroup class]]){
-            LinkGroup* group = self.thisLinkObjs;
-            NSMutableArray* returnObjs = [NSMutableArray new];
-            va_list args;
-            va_start(args, code);
-            for (int i=0; i<group.linkObjects.count; i++) {
-                DynamicLink* link = [DynamicLink dynamicLinkWithCode:code];
-                id result = [link invoke:_self args:&args];
-                [returnObjs addObject:result];
-            }
-            va_end(args);
-            [group.linkObjects setArray:returnObjs];
-            return group;
-        }
-        //LinkGroupHandle_VAL
-        ///////////////////////
-        
-        va_list args;
-        va_start(args , code);
-        DynamicLink* link = [DynamicLink dynamicLinkWithCode:code];
-        id result = [link invoke:_self args:&args];
-        va_end(args);
-        
-        return result;
-    };
-}
-
-- (NSObject *(^)(id , ...))linkCodeEval
-{
-    return ^id(id obj, ...){
-        LinkHandle_REF(NSString)
-        
-        ///////////////////////
-        //LinkGroupHandle_REF
-        if([self isKindOfClass:[LinkGroup class]]){
-            LinkGroup* group = self.thisLinkObjs;
-            NSMutableArray* returnObjs = [NSMutableArray new];
-            va_list args;
-            va_start(args, obj);
-            for (int i=0; i<group.linkObjects.count; i++) {
-                DynamicLink* link = [DynamicLink dynamicLinkWithCode:_self];
-                id result = [link invoke:obj args:&args];
-                [returnObjs addObject:result];
-            }
-            va_end(args);
-            [group.linkObjects setArray:returnObjs];
-            return group;
-        }
-        //LinkGroupHandle_VAL
-        ///////////////////////
-        
-        va_list vList;
-        va_start(vList , obj);
-        DynamicLink* link = [DynamicLink dynamicLinkWithCode:_self];
-        id result = [link invoke:obj args:&vList];
-        va_end(vList);
-        
-        return result;
-    };
-}
-
-
-
 
 #pragma mark - 类型转换
 

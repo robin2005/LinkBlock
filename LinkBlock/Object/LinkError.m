@@ -1,13 +1,13 @@
 //
 //  LinkError.m
 //
-//  Created by NOVO on 15/8/20.
-//  Copyright (c) 2015年 NOVO. All rights reserved.
+//  Created by Meterwhite on 15/8/20.
+//  Copyright (c) 2015年 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlock.h"
 #import "LinkHelper.h"
-#import "NSNil.h"
+#import "LBBlakObject.h"
 
 @interface LinkError ()
 @property (nonatomic,copy) NSString* customDescription;
@@ -65,6 +65,6 @@
 - (id)forwardingTargetForSelector:(SEL)aSelector
 {
     [self logError];
-    return NSNil;
+    return LBBlakObject;
 }
 @end

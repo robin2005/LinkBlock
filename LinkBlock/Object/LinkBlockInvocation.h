@@ -2,8 +2,8 @@
 //  LinkBlockInvocation.h
 //  LinkBlockProgram
 //
-//  Created by NOVO on 2017/12/16.
-//  Copyright © 2017年 NOVO. All rights reserved.
+//  Created by Meterwhite on 2017/12/16.
+//  Copyright © 2017年 Meterwhite. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

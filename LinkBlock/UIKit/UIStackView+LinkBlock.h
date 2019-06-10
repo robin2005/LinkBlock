@@ -2,8 +2,8 @@
 //  UIStackView+LinkBlock.h
 //  LinkBlockProgram
 //
-//  Created by NOVO on 2019/1/15.
-//  Copyright © 2019 NOVO. All rights reserved.
+//  Created by Meterwhite on 2019/1/15.
+//  Copyright © 2019 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlockDefine.h"

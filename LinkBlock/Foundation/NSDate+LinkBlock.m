@@ -2,12 +2,12 @@
 //  NSDate+LinkBlock.m
 //  LinkBlockProgram
 //
-//  Created by NOVO on 15/9/3.
-//  Copyright (c) 2015年 NOVO. All rights reserved.
+//  Created by Meterwhite on 15/9/3.
+//  Copyright (c) 2015年 Meterwhite. All rights reserved.
 //
 
+#import "LBBlakObject.h"
 #import "LinkBlock.h"
-#import "NSNil.h"
 
 @implementation NSObject(NSDateLinkBlock)
 - (NSNumber *(^)(void))dateTimeIntervalSince1970As
@@ -114,7 +114,7 @@
     return ^id(NSString* formatStr){
         LinkHandle_REF(NSDate)
         LinkGroupHandle_REF(dateToStrWithFormat,formatStr)
-        if(NSEqualNil(formatStr) || ![formatStr isKindOfClass:[NSString class]])
+        if(LBEqualBlakObject(formatStr) || ![formatStr isKindOfClass:[NSString class]])
             return [_self description];
         NSDateFormatter* fmt=  [NSDateFormatter new];
         fmt.dateFormat= formatStr;

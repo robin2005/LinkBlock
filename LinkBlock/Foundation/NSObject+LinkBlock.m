@@ -1,17 +1,16 @@
 //
 //  NSObject+LinkBlock.m
 //
-//  Created by NOVO on 15/8/12.
-//  Copyright (c) 2015年 NOVO. All rights reserved.
+//  Created by Meterwhite on 15/8/12.
+//  Copyright (c) 2015年 Meterwhite. All rights reserved.
 //
 
-#import <objc/runtime.h>
-#import <CoreData/CoreData.h>
-#import "LinkBlock.h"
-#import "DynamicLink.h"
-#import "LinkHelper.h"
 #import "LinkBlockInvocation.h"
-#import "NSNil.h"
+#import <CoreData/CoreData.h>
+#import <objc/runtime.h>
+#import "LinkHelper.h"
+#import "LinkBlock.h"
+#import "LBBlakObject.h"
 
 #ifndef _LB_performSelector
 #define _LB_performSelector(target , selector) \
@@ -1448,7 +1447,7 @@
     return ^id(id obj){
         LinkHandle_REF(NSObject)
         LinkGroupHandle_REF(objRemoveFrom , obj)
-        if(NSEqualNil(obj)) return _self;
+        if(LBEqualBlakObject(obj)) return _self;
         
         if([obj respondsToSelector:@selector(removeObject:)]){
             

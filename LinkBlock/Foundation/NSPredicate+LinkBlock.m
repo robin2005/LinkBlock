@@ -2,8 +2,8 @@
 //  NSPredicate+LinkBlock.m
 //  LinkBlockProgram
 //
-//  Created by NOVO on 2018/10/9.
-//  Copyright © 2018 NOVO. All rights reserved.
+//  Created by Meterwhite on 2018/10/9.
+//  Copyright © 2018 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlock.h"

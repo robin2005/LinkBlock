@@ -2,8 +2,8 @@
 //  LinkInfo.m
 //  LinkBlockProgram
 //
-//  Created by NOVO on 16/7/12.
-//  Copyright © 2016年 NOVO. All rights reserved.
+//  Created by Meterwhite on 16/7/12.
+//  Copyright © 2016年 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlock.h"
@@ -33,12 +33,4 @@
     [self.userInfo removeAllObjects];
 }
 
-+ (void)linkBlockWarningClose
-{
-    [LinkHelper link_block_configuration_set_is_show_warning:NO];
-}
-+ (void)linkBlockWarningOpen
-{
-    [LinkHelper link_block_configuration_set_is_show_warning:YES];
-}
 @end

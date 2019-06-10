@@ -1,8 +1,8 @@
 //
 //  LinkBlock.h
 //
-//  Created by NOVO on 15/8/13.
-//  Copyright (c) 2015年 NOVO. All rights reserved.
+//  Created by Meterwhite on 15/8/13.
+//  Copyright (c) 2015年 Meterwhite. All rights reserved.
 //
 
 #import "LinkObject.h"
@@ -184,94 +184,6 @@
 #define aCGSizeValue                aCGSizeValue
 #define aCGPointValue               aCGPointValue
 #define aNSRangeValue               aNSRangeValue
-
-////////////////////////////////////////////////
-//MARK:Experimental DynamicLink/脚本解析-实验性
-////////////////////////////////////////////////
-/*
- *  DynamicLink/脚本解析:
- *  script.linkCodeEval(targetObject,argumentList....);
- *
- *
- *  DynamicLink used like linkBlock
- *  1."...actionName()..."The actionName wiil called as linkBlock
- *  2."...actionName...".The actionName will called as property > non-argument method > LinkBlock command
- 
- *  LinkBlock command/命令:
- *  1.CreateCommand:"ClassName+New";
- *  2.LinkBlock macros,like 'NSNil','AttrDictNew'
- *
- *  note:DynamicLink did not suport the function that use argument list.If do it,system will recive only one agument,This will cause potential differences./不支持不定参数方法，否则只接收一个参数
- *
- *
- *  direct value/直接量：
- *  direct value used in '()'.Like:"actionName(3.1415926)"
- *  suport types:number||HexNumber,String,Boolean,c string,char,NSNumber,SEL,struct in NSValue,Class;
- *  Reference:DynamicLinkArgument.h
- *
- *  note:1.If set actionName or func as direct value,it must be non-argument func/方法的直接量必须是无惨的
- *  2.cannot have double quotes in a string/字符串中不再用双引号
- *
- *
- *  Entry order/入参顺序:
- *  One-to-one correspondence/一一对应关系
- *  script:"actionName($0 , 3.14 , $1)" => argument list:($0 , $1)
- *  Only suport set arguments to outer layer,to inner layer func should use direct value.
- *  In argument list use NSNil instead nil,or use direct value nil or NULL in script
- *
- *  return type:In dynamicLink all return type has been boxed./所有返回值都是装箱的
- */
-
-
-/**
- *  execute script from any object and return value.
- *  anyObject.linkEvalCode(code , arg0 , arg1 , ...)
- *  note:any return value has been boxed
- */
-#define linkEvalCode(code , args...)    \
-    \
-    linkEvalCode(code , ##args, nil, NSNotFound)
-
-/**
- *  execute script with an object and return value.
- *  code.linkCodeEval( target , arg0 , arg1 , ...)
- *  note:any return value has been boxed
- */
-#define linkCodeEval(obj , args...) \
-    \
-    linkCodeEval(obj, ##args, nil, NSNotFound)
-
-/**
- *  only execute script and return value.
- *  EvalLinkBlock(script)
- *  note:any return value has been boxed
- */
-#define EvalLinkBlock(code) \
-    \
-    (linkObj_id(code).linkCodeEval(NSNil, nil))
-/**
- *  only execute script by a target object and return value.
- *  EvalLinkBlockWithTarget(target ,script)
- *  note:any return value has been boxed
- */
-#define EvalLinkBlockWithTarget(target,code)    \
-    \
-    (linkObj_id(code).linkCodeEval(linkObj(target) , nil))
-
-
-
-//////////////////////////////
-//MARK: Configuration/配置
-//////////////////////////////
-/** Close the warning */
-#define LinkBlockWarningClose   \
-    \
-    ([LinkInfo linkBlockWarningClose])
-
-/** Allow warning (default) */
-#define LinkBlockWarningOpen    \
-    \
-    ([LinkInfo linkBlockWarningOpen])
 
 //////////////////////////////////
 //MARK: Other function

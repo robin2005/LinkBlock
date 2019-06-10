@@ -2,10 +2,11 @@
 //  AppDelegate.m
 //  LinkBlockProgram
 //
-//  Created by NOVO on 15/8/18.
-//  Copyright (c) 2015年 NOVO. All rights reserved.
+//  Created by Meterwhite on 15/8/18.
+//  Copyright (c) 2015年 Meterwhite. All rights reserved.
 //
 
+#import "ViewController.h"
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -16,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    ViewController *vc = [[ViewController alloc]init];
+    [self.window setRootViewController:vc];
+    self.window.backgroundColor = [UIColor purpleColor];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

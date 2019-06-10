@@ -2,8 +2,8 @@
 //  LinkReturn.h
 //  LinkBlockProgram
 //
-//  Created by NOVO on 16/9/23.
-//  Copyright © 2016年 NOVO. All rights reserved.
+//  Created by Meterwhite on 16/9/23.
+//  Copyright © 2016年 Meterwhite. All rights reserved.
 //
 
 #import "LinkInfo.h"

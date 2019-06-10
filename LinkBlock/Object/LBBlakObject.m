@@ -1,12 +1,12 @@
 //
-//  NSBlackHole.m
+//  LBBlakObject.m
 //  LinkBlockProgram
 //
-//  Created by NOVO on 2017/12/28.
-//  Copyright © 2017年 NOVO. All rights reserved.
+//  Created by Meterwhite on 2017/12/28.
+//  Copyright © 2017年 Meterwhite. All rights reserved.
 //
 
-#import "NSBlackHole.h"
+#import "LBBlakObject.h"
 #import <os/lock.h>
 #import <objc/runtime.h>
 
@@ -36,7 +36,6 @@ Class *bh_copyClassList (unsigned *count) {
         return NULL;
     }
     
-    //填充
     classCount = objc_getClassList(allClasses, classCount);
     allClasses[classCount] = NULL;
     
@@ -83,14 +82,12 @@ NSMethodSignature *bh_globalMethodSignatureForSelector (SEL aSelector) {
     uintptr_t hash = (uintptr_t)((void *)aSelector) & selectorCacheMask;
     bh_methodDescription methodDesc;
     
-    //读和写需要原子性,这里会将非常快
     static os_unfair_lock lock = OS_UNFAIR_LOCK_INIT;
     
     os_unfair_lock_lock(&lock);
     methodDesc = methodDescriptionCache[hash];
     os_unfair_lock_unlock(&lock);
     
-    //缓存命中
     if (methodDesc.name == aSelector) {
         return [NSMethodSignature signatureWithObjCTypes:methodDesc.types];
     }
@@ -111,7 +108,10 @@ NSMethodSignature *bh_globalMethodSignatureForSelector (SEL aSelector) {
                     method = class_getClassMethod(cls, aSelector);
                 
                 if (method) {
-                    methodDesc = (bh_methodDescription){.name = aSelector, .types = method_getTypeEncoding(method)};
+                    
+                    methodDesc = (bh_methodDescription){.name = aSelector
+                        , .types = method_getTypeEncoding(method)};
+                    
                     break;
                 }
             }
@@ -141,7 +141,6 @@ NSMethodSignature *bh_globalMethodSignatureForSelector (SEL aSelector) {
     
     if (methodDesc.name) {
         
-        //如果不能上锁,立刻缓存这个值
         if (os_unfair_lock_trylock(&lock)) {
             methodDescriptionCache[hash] = methodDesc;
             os_unfair_lock_unlock(&lock);
@@ -157,13 +156,13 @@ NSMethodSignature *bh_globalMethodSignatureForSelector (SEL aSelector) {
     }
 }
 
-@implementation NSBlackHole
+@implementation LBBlakClass
 
 static id _self = nil;
 
 + (void)initialize
 {
-    if(self == [NSBlackHole class]){
+    if(self == [LBBlakClass class]){
         if(!_self){
             _self = [self alloc];
         }

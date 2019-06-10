@@ -2,8 +2,8 @@
 //  UISearchBar+LinkBlock.h
 //  LinkBlockProgram
 //
-//  Created by NOVO on 17/5/8.
-//  Copyright © 2017年 NOVO. All rights reserved.
+//  Created by Meterwhite on 17/5/8.
+//  Copyright © 2017年 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlockDefine.h"

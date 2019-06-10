@@ -2,8 +2,8 @@
 //  UIFont+LinkBlock.m
 //  LinkBlockProgram
 //
-//  Created by NOVO on 2017/11/2.
-//  Copyright © 2017年 NOVO. All rights reserved.
+//  Created by Meterwhite on 2017/11/2.
+//  Copyright © 2017年 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlock.h"

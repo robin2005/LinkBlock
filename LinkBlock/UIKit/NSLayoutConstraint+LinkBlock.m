@@ -2,8 +2,8 @@
 //  NSLayoutConstraint+LinkBlock.m
 //  LinkBlockProgram
 //
-//  Created by NOVO on 2018/6/20.
-//  Copyright © 2018年 NOVO. All rights reserved.
+//  Created by Meterwhite on 2018/6/20.
+//  Copyright © 2018年 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlock.h"

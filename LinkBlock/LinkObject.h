@@ -2,8 +2,8 @@
 //  LinkObject.h
 //  LinkBlockProgram
 //
-//  Created by Novo on 2018/10/18.
-//  Copyright © 2018 Novo. All rights reserved.
+//  Created by Meterwhite on 2018/10/18.
+//  Copyright © 2018 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlockDefine.h"
@@ -49,17 +49,6 @@
 @property LB_FN NSObject*      linkIfNull;
 /** `NonNull` means @YES or !NSNull.It is the same as linkIf_YES */
 @property LB_FN NSObject*      linkIfNonNull;
-
-
-/**
- DynamicLink
- Parameters end with "nil,NSNotFond" indicate that it for structValue.
- :
- object.linkEvalCode(@"block0()...");
- */
-@property LB_BK NSObject*     (^linkEvalCode)(NSString* script , ...);
-
-
 
 /**
  MARK: Link Indicate/链条指示
@@ -116,17 +105,6 @@
 @property LB_FN NSValue*       aCGSizeValue;
 @property LB_FN NSValue*       aCGPointValue;
 @property LB_FN NSValue*       aNSRangeValue;
-
-#pragma mark ----NSString----
-/**
- DynamicLink
- Parameters end with "nil,NSNotFond" indicate that it for structValue.
- :
- scriptString.linkCodeEval(targetObject,argument...);
- */
-@property LB_BK NSObject*      (^linkCodeEval)(id obj, ...);
-
-
 
 #pragma mark - Force type declaration/强制类型声明
 /**

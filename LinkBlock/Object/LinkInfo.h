@@ -2,8 +2,8 @@
 //  LinkInfo.h
 //  LinkBlockProgram
 //
-//  Created by NOVO on 16/7/12.
-//  Copyright © 2016年 NOVO. All rights reserved.
+//  Created by Meterwhite on 16/7/12.
+//  Copyright © 2016年 Meterwhite. All rights reserved.
 //
 
 #import "LinkBlockDefine.h"
@@ -26,7 +26,4 @@ typedef enum LinkInfoType{
 @property (nonatomic,strong) NSMutableDictionary* userInfo;
 - (void)cleanUserInfo;
 
-#pragma mark - Config
-+ (void)linkBlockWarningClose;
-+ (void)linkBlockWarningOpen;
 @end

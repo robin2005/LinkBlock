@@ -2,16 +2,15 @@
 //  LinkHelper.m
 //  LinkBlockProgram
 //
-//  Created by NOVO on 2017/12/13.
-//  Copyright © 2017年 NOVO. All rights reserved.
+//  Created by Meterwhite on 2017/12/13.
+//  Copyright © 2017年 Meterwhite. All rights reserved.
 //
 
+#import <JavaScriptCore/JavaScriptCore.h>
+#import <objc/runtime.h>
 #import "LinkBlock.h"
 #import "LinkHelper.h"
-#import "DynamicLink.h"
-#import <objc/runtime.h>
-#import <JavaScriptCore/JavaScriptCore.h>
-#import "NSNil.h"
+#import "LBBlakObject.h"
 
 @interface LinkHelper<__covariant ObjectType>()
 @property (nonatomic,strong) id target;
@@ -26,7 +25,7 @@
 
 - (id)blockPropertyFromObjectByPropertyName:(NSString *)propertyName
 {
-    if(NSEqualNil(self.target)) return nil;
+    if(LBEqualBlakObject(self.target)) return nil;
     
     SEL sel = NSSelectorFromString(propertyName);
     //可响应
@@ -105,61 +104,7 @@ static NSString* _lbEncodeFormate = @"_LB%@_";
     if([preString rangeOfString:@"NSNumber"].location == 0) return YES;
     return NO;
 }
-- (id)valueFromLinkBlockEncodingCodeAction
-{
-    if(!self_target_is_type(NSString)) return nil;
-    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"_LB[0-9A-Za-z]+_"
-                                                                           options:0
-                                                                             error:nil];
-    NSString* preString = self.target;
-    preString = preString.strTrimLeft(@" ").strTrimRight(@" ");
-    NSInteger typeFlag = 0;//0-non,1-nsstring,2-nsnumber
-    if([preString rangeOfString:@"NSString"].location == 0){
-        typeFlag = 1;
-        preString = [preString substringFromIndex:8];
-    }else if ([preString rangeOfString:@"NSNumber"].location == 0){
-        typeFlag = 2;
-        preString = [preString substringFromIndex:8];
-    }
-    
-    NSMutableString* code = [preString mutableCopy];
-    
-    NSInteger offset = 0;
-    NSArray<NSTextCheckingResult*>* results = [regex matchesInString:code
-                                                             options:0
-                                                               range:code.strRange()];
-    for (NSTextCheckingResult* result in results) {
-        
-        NSRange rangeOfResult = result.range;
-        rangeOfResult.location += offset;
-        NSString* matchString = [regex replacementStringForResult:result
-                                                         inString:code
-                                                           offset:offset
-                                                         template:@"$0"];
-        
-        NSString* replacementString = [NSString stringWithFormat:@"\\u%@",[matchString substringWithRange:NSMakeRange(3, matchString.length-4)]];
-        replacementString = replacementString.strFromUnicoding();//还原
-        
-        [code replaceCharactersInRange:rangeOfResult withString:replacementString];
-        offset += (replacementString.length - rangeOfResult.length);
-    }
-    
-    if(typeFlag == 1){
-        return code.copy;
-    }else if (typeFlag == 2){
-        NSScanner *scaner= [[NSScanner alloc] initWithString:code];
-        if([scaner scanDouble:nil] && [scaner isAtEnd]){
-            return [[LinkHelper help:code] numberEvalFromCode];
-        }else{
-            id number = [[LinkHelper help:code] valueFromValueCode];
-            if([number isKindOfClass:[NSNumber class]]){
-                return number;
-            }
-        }
-    }
-    
-    return nil;
-}
+
 - (NSString*)linkBlockEncodingNSStringAndNSNumberFromCode
 {
     /*
@@ -414,303 +359,7 @@ static NSString* _lbEncodeFormate = @"_LB%@_";
     return propertyName;
 }
 
-- (NSValue*)valueFromValueCode
-{
-    if(!self_target_is_type(NSString))
-        return nil;
-    
-    if(![self.target length] || [[self.target stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]==0)
-    {
-        return nil;
-    }
-    
-    NSString* code = [self.target copy];
-    if([code isEqualToString:@"nil"]||
-       [[code lowercaseString] isEqualToString:@"null"]){
-        id _nil = nil;
-        return [NSValue valueWithBytes:&_nil objCType:@encode(id)];
-    }
-    
-    if([code isEqualToString:@"NSNil"]){
-        id nsil = NSNil;
-        return [NSValue valueWithBytes:&nsil objCType:@encode(id)];
-    }
-    
-    //NSString <可空白@"..."可空白>
-    if([code rangeOfString:@"[\\s\\S]*@\"[\\s\\S]*\"[\\s\\S]*" options:NSRegularExpressionSearch].length){
-        NSRange rangeOfMatch = [code rangeOfString:@"@\"[\\s\\S]*\"" options:NSRegularExpressionSearch];
-        NSString* stringV = [code substringWithRange:NSMakeRange(rangeOfMatch.location+2, rangeOfMatch.length-3)];
-        CFBridgingRetain(stringV);
-        return [NSValue value:&stringV withObjCType:@encode(NSString*)];
-    }
-    
-    //去空白
-    code = [code stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    NSScanner* scanner = [[NSScanner alloc] initWithString:code];
-    //整型
-    NSInteger intV;
-    if([scanner scanInteger:&intV] && [scanner isAtEnd]){
-        return [NSNumber numberWithInteger:intV];
-    }
-    //double
-    double doubleV;
-    scanner.scanLocation = 0;
-    if([scanner scanDouble:&doubleV] && [scanner isAtEnd]){
-        return [NSNumber numberWithDouble:doubleV];
-    }
-    //十六进制整型
-    unsigned unsignedV;
-    scanner.scanLocation = 0;
-    if([scanner scanHexInt:&unsignedV] && [scanner isAtEnd]){
-        return [NSNumber numberWithInteger:unsignedV];
-    }
-    //十六进制浮点
-    doubleV = 0.0;
-    scanner.scanLocation = 0;
-    if([scanner scanHexDouble:&doubleV] && [scanner isAtEnd]){
-        return [NSNumber numberWithDouble:doubleV];
-    }
-    
-    //布尔值
-    BOOL boolV;
-    if([code isEqualToString:@"YES"]     ||
-       [code isEqualToString:@"NO"]      ||
-       [code isEqualToString:@"true"]    ||
-       [code isEqualToString:@"false"]) {
-        boolV = [code isEqualToString:@"YES"]||[code isEqualToString:@"true"];
-        return [NSNumber numberWithBool:boolV];
-    }
-    
-    //char* "..."
-    if([code rangeOfString:@"^\"[\\s\\S]*\"$" options:NSRegularExpressionSearch].length){
-        const char* charV = [[code substringWithRange:NSMakeRange(1, [code length]-2)] UTF8String];
-        return [NSValue valueWithBytes:&charV objCType:@encode(char*)];
-    }
-    
-    //char 'A'
-    if([code rangeOfString:@"^'\\w'$" options:NSRegularExpressionSearch].length){
-        NSNumber* numberV = [NSNumber numberWithChar:[code characterAtIndex:1]];
-        CFBridgingRetain(numberV);
-        return [NSValue valueWithBytes:&numberV objCType:@encode(NSNumber*)];
-    }
-    
-    //NSNumber @(number of expresion)
-    if([code rangeOfString:@"^@\\([\\s\\S]*\\)$" options:NSRegularExpressionSearch].length){
-        
-        NSString* numberContent = [code substringWithRange:NSMakeRange(2, [code length]-3)];
-        NSNumber* numberV = [[LinkHelper help:numberContent] numberEvalFromCode];
-        CFBridgingRetain(numberV);
-        return [NSValue valueWithBytes:&numberV objCType:@encode(NSNumber*)];
-    }
-    //NSNumber @number
-    if([code rangeOfString:@"^@\\d+$" options:NSRegularExpressionSearch].length){
-        NSNumber* numberV = [NSNumber numberWithDouble:
-                             [[code substringWithRange:NSMakeRange(1, [code length]-1)]
-                              doubleValue]];
-        CFBridgingRetain(numberV);
-        return [NSValue valueWithBytes:&numberV objCType:@encode(NSNumber*)];
-    }
-    //NSNumber @YES
-    if([code isEqualToString:@"@YES"] || [code isEqualToString:@"@NO"] ||
-       [code isEqualToString:@"@true"] || [code isEqualToString:@"@false"]){
-        NSNumber* numberV =  [NSNumber numberWithBool:[code isEqualToString:@"@YES"]||[code isEqualToString:@"@true"]];
-        CFBridgingRetain(numberV);
-        return [NSValue valueWithBytes:&numberV objCType:@encode(NSNumber*)];
-    }
-    
-    //SEL
-    if([code rangeOfString:@"^@selector\\(.+\\)$" options:NSRegularExpressionSearch].length){
-        //@selector(xxxx)
-        NSString* selectorString = [code substringWithRange:NSMakeRange(10, [code length]-11)];
-        selectorString = [selectorString stringByReplacingOccurrencesOfString:@" " withString:@""];
-        SEL selectorV = NSSelectorFromString(selectorString);
-        return [NSValue valueWithBytes:&selectorV objCType:@encode(SEL)];
-    }
-    
-    
-    /*********************
-     NSValue支持的结构体
-     *********************/
-    if([code rangeOfString:@"^CGRectMake\\(.+\\)$" options:NSRegularExpressionSearch].length){
-        
-        NSArray<NSString*>* argsOfStringV = [[LinkHelper help:code] functionArgumentSplitFromFunctionCallCode];
-        if(argsOfStringV.count!=4) return nil;
-        CGRect rect =
-        CGRectMake([[[LinkHelper help:argsOfStringV[0]] numberEvalFromCode] doubleValue],
-                   [[[LinkHelper help:argsOfStringV[1]] numberEvalFromCode] doubleValue],
-                   [[[LinkHelper help:argsOfStringV[2]] numberEvalFromCode] doubleValue],
-                   [[[LinkHelper help:argsOfStringV[3]] numberEvalFromCode] doubleValue]);
-        return [NSValue value:&rect withObjCType:@encode(CGRect)];
-    }
-    
-    if([code rangeOfString:@"^CGSizeMake\\(.+\\)$" options:NSRegularExpressionSearch].length){
-        
-        NSArray<NSString*>* argsOfStringV = [[LinkHelper help:code] functionArgumentSplitFromFunctionCallCode];
-        if(argsOfStringV.count!=2) return nil;
-        CGSize size =
-        CGSizeMake([[[LinkHelper help:argsOfStringV[0]] numberEvalFromCode] doubleValue],
-                   [[[LinkHelper help:argsOfStringV[1]] numberEvalFromCode] doubleValue]);
-        return [NSValue value:&size withObjCType:@encode(CGSize)];
-    }
-    
-    if([code rangeOfString:@"^CGPointMake\\(.+\\)$" options:NSRegularExpressionSearch].length){
-        
-        NSArray<NSString*>* argsOfStringV = [[LinkHelper help:code] functionArgumentSplitFromFunctionCallCode];
-        if(argsOfStringV.count!=2) return nil;
-        CGPoint point =
-        CGPointMake([[[LinkHelper help:argsOfStringV[0]] numberEvalFromCode] doubleValue],
-                    [[[LinkHelper help:argsOfStringV[1]] numberEvalFromCode] doubleValue]);
-        return [NSValue value:&point withObjCType:@encode(CGPoint)];
-    }
-    
-    if([code rangeOfString:@"^NSMakeRange\\(.+\\)$" options:NSRegularExpressionSearch].length){
-        
-        NSArray<NSString*>* argsOfStringV = [[LinkHelper help:code] functionArgumentSplitFromFunctionCallCode];
-        if(argsOfStringV.count!=2) return nil;
-        NSRange range
-        = NSMakeRange([[[LinkHelper help:argsOfStringV[0]] numberEvalFromCode] unsignedIntegerValue],
-                      [[[LinkHelper help:argsOfStringV[1]] numberEvalFromCode] unsignedIntegerValue]);
-        return [NSValue value:&range withObjCType:@encode(NSRange)];
-    }
-    
-    if([code rangeOfString:@"^UIEdgeInsetsMake\\(.+\\)$" options:NSRegularExpressionSearch].length){
-        
-        NSArray<NSString*>* argsOfStringV = [[LinkHelper help:code] functionArgumentSplitFromFunctionCallCode];
-        if(argsOfStringV.count!=4) return nil;
-        UIEdgeInsets edgeInsets =
-        UIEdgeInsetsMake([[[LinkHelper help:argsOfStringV[0]] numberEvalFromCode] doubleValue],
-                         [[[LinkHelper help:argsOfStringV[1]] numberEvalFromCode] doubleValue],
-                         [[[LinkHelper help:argsOfStringV[2]] numberEvalFromCode] doubleValue],
-                         [[[LinkHelper help:argsOfStringV[3]] numberEvalFromCode] doubleValue]);
-        return [NSValue value:&edgeInsets withObjCType:@encode(UIEdgeInsets)];
-    }
-    
-    if([code rangeOfString:@"^CGVectorMake\\(.+\\)$" options:NSRegularExpressionSearch].length){
-        
-        NSArray<NSString*>* argsOfStringV = [[LinkHelper help:code] functionArgumentSplitFromFunctionCallCode];
-        if(argsOfStringV.count!=2) return nil;
-        CGVector vector =
-        CGVectorMake([[[LinkHelper help:argsOfStringV[0]] numberEvalFromCode] doubleValue],
-                     [[[LinkHelper help:argsOfStringV[1]] numberEvalFromCode] doubleValue]);
-        return [NSValue value:&vector withObjCType:@encode(CGVector)];
-    }
-    
-    if([code rangeOfString:@"^UIOffsetMake\\(.+\\)$" options:NSRegularExpressionSearch].length){
-        
-        NSArray<NSString*>* argsOfStringV = [[LinkHelper help:code] functionArgumentSplitFromFunctionCallCode];
-        if(argsOfStringV.count!=2) return nil;
-        UIOffset offset =
-        UIOffsetMake([[[LinkHelper help:argsOfStringV[0]] numberEvalFromCode] doubleValue],
-                     [[[LinkHelper help:argsOfStringV[1]] numberEvalFromCode] doubleValue]);
-        return [NSValue value:&offset withObjCType:@encode(UIOffset)];
-    }
-    
-    //CATransform3D无构造器和NSString形式所以都不支持识别
-    
-    if([code rangeOfString:@"^CGAffineTransformMake\\(.+\\)$" options:NSRegularExpressionSearch].length){
-        
-        NSArray<NSString*>* argsOfStringV = [[LinkHelper help:code] functionArgumentSplitFromFunctionCallCode];
-        if(argsOfStringV.count!=6) return nil;
-        CGAffineTransform affineTransform =
-        CGAffineTransformMake([[[LinkHelper help:argsOfStringV[0]] numberEvalFromCode] doubleValue],
-                              [[[LinkHelper help:argsOfStringV[1]] numberEvalFromCode] doubleValue],
-                              [[[LinkHelper help:argsOfStringV[2]] numberEvalFromCode] doubleValue],
-                              [[[LinkHelper help:argsOfStringV[3]] numberEvalFromCode] doubleValue],
-                              [[[LinkHelper help:argsOfStringV[4]] numberEvalFromCode] doubleValue],
-                              [[[LinkHelper help:argsOfStringV[5]] numberEvalFromCode] doubleValue]);
-        return [NSValue value:&affineTransform withObjCType:@encode(CGAffineTransform)];
-    }
-    
-    if (@available(iOS 11.0, *)){
-        if([code rangeOfString:@"^NSDirectionalEdgeInsetsMake\\(.+\\)$" options:NSRegularExpressionSearch].length){
-            
-            NSArray<NSString*>* argsOfStringV = [[LinkHelper help:code] functionArgumentSplitFromFunctionCallCode];
-            if(argsOfStringV.count!=4) return nil;
-            NSDirectionalEdgeInsets directionalEdgeInsets
-            = NSDirectionalEdgeInsetsMake([[[LinkHelper help:argsOfStringV[0]] numberEvalFromCode] doubleValue],
-                                          [[[LinkHelper help:argsOfStringV[1]] numberEvalFromCode] doubleValue],
-                                          [[[LinkHelper help:argsOfStringV[2]] numberEvalFromCode] doubleValue],
-                                          [[[LinkHelper help:argsOfStringV[3]] numberEvalFromCode] doubleValue]);
-            return [NSValue value:&directionalEdgeInsets withObjCType:@encode(NSDirectionalEdgeInsets)];
-        }
-    }
-    
-    //类型
-    if(NSClassFromString(code)){
-        Class clz = NSClassFromString(code);
-        return [NSValue valueWithBytes:&clz objCType:@encode(Class)];
-    }
-    
-    //LinkBlock脚本代码
-    NSArray<NSString*>* blockCommands = [[LinkHelper help:code] actionCommandSplitFromLinkCode];
-    if(blockCommands.count){
-        DynamicLink* link = [DynamicLink dynamicLinkWithCode:code];
-        id val = [link invoke:NSNil args:nil];
-        CFBridgingRetain(val);
-        return [NSValue valueWithBytes:&val objCType:@encode(id)];
-    }
-    
-    //尝试解析为算数表达式
-    return [[LinkHelper help:code] numberEvalFromCode];
-}
 
-- (NSArray<NSString *> *)functionArgumentSplitFromFunctionCallCode
-{
-    if(!self_target_is_type(NSString)) return nil;
-    //检查格式
-    //函数调用格式  字母[数字](...)
-    if([self.target rangeOfString:@"[a-zA-Z_]+\\w*\\s*\\(.*\\)" options:NSRegularExpressionSearch].location == NSNotFound){
-        return nil;
-    }
-    
-    NSString* code = [self.target copy];
-    NSRange range = [code rangeOfString:@"\\(.*\\)" options:NSRegularExpressionSearch];
-    NSMutableArray* argsOfReturn = [NSMutableArray new];
-    if(range.length){
-        
-        code = [code substringWithRange:NSMakeRange(range.location+1, range.length-2)];//去外层括号
-        //无内容直接返回
-        if (!code.length || [[code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]==0) {
-            return argsOfReturn;
-        }
-        NSMutableArray<NSString*>* arrOfArgs = [[code componentsSeparatedByString:@","] mutableCopy];
-        NSRegularExpression* leftRegex = [NSRegularExpression regularExpressionWithPattern:@"\\(" options:0 error:0];
-        NSRegularExpression* rightRegex = [NSRegularExpression regularExpressionWithPattern:@"\\)" options:0 error:0];
-        NSMutableString* stackString = [NSMutableString new];
-        __block NSInteger flag = 0;//左括号 = -1，右括号 = 1
-        [arrOfArgs enumerateObjectsUsingBlock:^(NSString * _Nonnull stringV, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            NSInteger rightFlag = [rightRegex numberOfMatchesInString:stringV options:0 range:NSMakeRange(0, stringV.length)];
-            NSInteger leftFlag = [leftRegex numberOfMatchesInString:stringV options:0 range:NSMakeRange(0, stringV.length)];
-            NSInteger currentFlag = rightFlag - leftFlag;
-            if(flag == 0){
-                
-                //之前没有需要匹配的括号
-                if(currentFlag == 0){
-                    //当前没有需要匹配的括号 输出
-                    [argsOfReturn addObject:stringV];
-                }else{
-                    //当前有需要匹配的括号 入栈
-                    [stackString appendString:stringV];
-                    [stackString appendString:@","];
-                }
-            }else{
-                //之前有需要匹配的括号
-                //入栈继续匹配
-                [stackString appendString:stringV];
-                if(flag + currentFlag == 0){
-                    //一次匹配完成
-                    [argsOfReturn addObject:[stackString copy]];//输出
-                    [stackString setString:@""];//出栈
-                }
-            }
-            //更新括号值
-            flag += currentFlag;
-        }];
-    }
-    return argsOfReturn;
-}
 
 - (NSNumber *)numberEvalFromCode
 {
@@ -741,17 +390,6 @@ static NSString* _lbEncodeFormate = @"_LB%@_";
     return nil;
 }
 
-- (BOOL)isIndefiniteParametersLinkBlockName
-{
-    if(!self_target_is_type(NSString)) return NO;
-    return [[self listOfLinkBlockIsIndefiniteParameters] containsObject:self.target];
-}
-
-- (BOOL)isUnavailableActionName
-{
-    if(!self_target_is_type(NSString)) return NO;
-    return [[self listOfLinkBlockUnavailableAction] containsObject:self.target];
-}
 
 + (void) helpSwitchObjcType:(const char*)objcType
                    caseVoid:(void(^)(void))caseVoid
@@ -914,7 +552,7 @@ static NSArray* _listOfLinkBlockIsIndefiniteParameters;
         _listOfLinkBlockIsIndefiniteParameters
         = @[@"objPerformSelectors",@"objPerformSelectorsWithArgs",
             @"strToPredicateWidthFormatArgs",@"viewAddSubviews",
-            @"strAppendFormat",@"linkEvalCode",@"linkCodeEval",
+            @"strAppendFormat",
             @"objPerformSelectorsWithArgsAsWhatReturns",
             @"objIsEqualToSomeone",@"objIsEqualToSomeoneAs",
             @"objPerformSelectorsAsWhatReturns",
