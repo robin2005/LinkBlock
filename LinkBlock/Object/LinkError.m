@@ -7,7 +7,7 @@
 
 #import "LinkBlock.h"
 #import "LinkHelper.h"
-#import "LBBlakObject.h"
+#import "LBNil.h"
 
 @interface LinkError ()
 @property (nonatomic,copy) NSString* customDescription;
@@ -65,6 +65,6 @@
 - (id)forwardingTargetForSelector:(SEL)aSelector
 {
     [self logError];
-    return LBBlakObject;
+    return LBNil;
 }
 @end

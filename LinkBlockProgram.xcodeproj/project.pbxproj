@@ -47,7 +47,7 @@
 		4599129622ADFEA2003EBD21 /* NSMutableArray+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599125522ADFEA2003EBD21 /* NSMutableArray+LinkBlock.m */; };
 		4599129722ADFEA2003EBD21 /* NSValue+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599125722ADFEA2003EBD21 /* NSValue+LinkBlock.m */; };
 		4599129822ADFEA2003EBD21 /* NSString+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599125822ADFEA2003EBD21 /* NSString+LinkBlock.m */; };
-		4599129922ADFEA2003EBD21 /* Others+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599125922ADFEA2003EBD21 /* Others+LinkBlock.m */; };
+		4599129922ADFEA2003EBD21 /* Deprecated+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599125922ADFEA2003EBD21 /* Deprecated+LinkBlock.m */; };
 		4599129A22ADFEA2003EBD21 /* NSPredicate+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599125A22ADFEA2003EBD21 /* NSPredicate+LinkBlock.m */; };
 		4599129B22ADFEA2003EBD21 /* NSError+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599125B22ADFEA2003EBD21 /* NSError+LinkBlock.m */; };
 		4599129C22ADFEA2003EBD21 /* NSMutableString+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599125D22ADFEA2003EBD21 /* NSMutableString+LinkBlock.m */; };
@@ -57,7 +57,7 @@
 		459912A022ADFEA2003EBD21 /* LinkReturn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599126822ADFEA2003EBD21 /* LinkReturn.m */; };
 		459912A122ADFEA2003EBD21 /* LinkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599126922ADFEA2003EBD21 /* LinkInfo.m */; };
 		459912A222ADFEA2003EBD21 /* LinkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599126C22ADFEA2003EBD21 /* LinkError.m */; };
-		459912A322ADFEA2003EBD21 /* LBBlakObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599126E22ADFEA2003EBD21 /* LBBlakObject.m */; };
+		459912A322ADFEA2003EBD21 /* LBNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599126E22ADFEA2003EBD21 /* LBNil.m */; };
 		459912A422ADFEA2003EBD21 /* LinkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599127222ADFEA2003EBD21 /* LinkObject.m */; };
 		459912A622ADFEE5003EBD21 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 459912A522ADFEE5003EBD21 /* Default-568h@2x.png */; };
 		9FFDA2121B835E2F0044097D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDA2111B835E2F0044097D /* main.m */; };
@@ -139,7 +139,7 @@
 		4599124122ADFEA2003EBD21 /* JSManagedValue+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSManagedValue+LinkBlock.h"; sourceTree = "<group>"; };
 		4599124222ADFEA2003EBD21 /* NSObject+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LinkBlock.h"; sourceTree = "<group>"; };
 		4599124322ADFEA2003EBD21 /* NSString+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LinkBlock.h"; sourceTree = "<group>"; };
-		4599124422ADFEA2003EBD21 /* Others+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Others+LinkBlock.h"; sourceTree = "<group>"; };
+		4599124422ADFEA2003EBD21 /* Deprecated+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Deprecated+LinkBlock.h"; sourceTree = "<group>"; };
 		4599124522ADFEA2003EBD21 /* NSValue+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+LinkBlock.h"; sourceTree = "<group>"; };
 		4599124622ADFEA2003EBD21 /* NSArray+LinkBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LinkBlock.m"; sourceTree = "<group>"; };
 		4599124722ADFEA2003EBD21 /* NSMutableArray+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+LinkBlock.h"; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		4599125622ADFEA2003EBD21 /* NSArray+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+LinkBlock.h"; sourceTree = "<group>"; };
 		4599125722ADFEA2003EBD21 /* NSValue+LinkBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+LinkBlock.m"; sourceTree = "<group>"; };
 		4599125822ADFEA2003EBD21 /* NSString+LinkBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LinkBlock.m"; sourceTree = "<group>"; };
-		4599125922ADFEA2003EBD21 /* Others+LinkBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Others+LinkBlock.m"; sourceTree = "<group>"; };
+		4599125922ADFEA2003EBD21 /* Deprecated+LinkBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Deprecated+LinkBlock.m"; sourceTree = "<group>"; };
 		4599125A22ADFEA2003EBD21 /* NSPredicate+LinkBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPredicate+LinkBlock.m"; sourceTree = "<group>"; };
 		4599125B22ADFEA2003EBD21 /* NSError+LinkBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LinkBlock.m"; sourceTree = "<group>"; };
 		4599125C22ADFEA2003EBD21 /* NSNumber+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+LinkBlock.h"; sourceTree = "<group>"; };
@@ -173,14 +173,14 @@
 		4599126422ADFEA2003EBD21 /* LinkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkError.h; sourceTree = "<group>"; };
 		4599126522ADFEA2003EBD21 /* LinkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkHelper.m; sourceTree = "<group>"; };
 		4599126622ADFEA2003EBD21 /* LinkBlockInvocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkBlockInvocation.m; sourceTree = "<group>"; };
-		4599126722ADFEA2003EBD21 /* LBBlakObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBBlakObject.h; sourceTree = "<group>"; };
+		4599126722ADFEA2003EBD21 /* LBNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBNil.h; sourceTree = "<group>"; };
 		4599126822ADFEA2003EBD21 /* LinkReturn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkReturn.m; sourceTree = "<group>"; };
 		4599126922ADFEA2003EBD21 /* LinkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkInfo.m; sourceTree = "<group>"; };
 		4599126A22ADFEA2003EBD21 /* LinkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkHelper.h; sourceTree = "<group>"; };
 		4599126B22ADFEA2003EBD21 /* LinkGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkGroup.h; sourceTree = "<group>"; };
 		4599126C22ADFEA2003EBD21 /* LinkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkError.m; sourceTree = "<group>"; };
 		4599126D22ADFEA2003EBD21 /* LinkBlockInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkBlockInvocation.h; sourceTree = "<group>"; };
-		4599126E22ADFEA2003EBD21 /* LBBlakObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBBlakObject.m; sourceTree = "<group>"; };
+		4599126E22ADFEA2003EBD21 /* LBNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBNil.m; sourceTree = "<group>"; };
 		4599126F22ADFEA2003EBD21 /* LinkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkInfo.h; sourceTree = "<group>"; };
 		4599127022ADFEA2003EBD21 /* LinkReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkReturn.h; sourceTree = "<group>"; };
 		4599127122ADFEA2003EBD21 /* LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkBlock.h; sourceTree = "<group>"; };
@@ -234,6 +234,8 @@
 				4599127122ADFEA2003EBD21 /* LinkBlock.h */,
 				4599120822ADFEA2003EBD21 /* LinkObject.h */,
 				4599127222ADFEA2003EBD21 /* LinkObject.m */,
+				4599124422ADFEA2003EBD21 /* Deprecated+LinkBlock.h */,
+				4599125922ADFEA2003EBD21 /* Deprecated+LinkBlock.m */,
 				4599123622ADFEA2003EBD21 /* Foundation */,
 				4599120922ADFEA2003EBD21 /* UIKit */,
 				4599126122ADFEA2003EBD21 /* Object */,
@@ -328,8 +330,6 @@
 				4599124E22ADFEA2003EBD21 /* NSURL+LinkBlock.m */,
 				4599124522ADFEA2003EBD21 /* NSValue+LinkBlock.h */,
 				4599125722ADFEA2003EBD21 /* NSValue+LinkBlock.m */,
-				4599124422ADFEA2003EBD21 /* Others+LinkBlock.h */,
-				4599125922ADFEA2003EBD21 /* Others+LinkBlock.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -337,13 +337,13 @@
 		4599123A22ADFEA2003EBD21 /* JavaScriptCore */ = {
 			isa = PBXGroup;
 			children = (
-				4599123B22ADFEA2003EBD21 /* JSValue+LinkBlock.h */,
 				4599123C22ADFEA2003EBD21 /* JavaScriptCore+LinkBlock.h */,
-				4599123D22ADFEA2003EBD21 /* JSManagedValue+LinkBlock.m */,
 				4599123E22ADFEA2003EBD21 /* JSContext+LinkBlock.h */,
-				4599123F22ADFEA2003EBD21 /* JSValue+LinkBlock.m */,
 				4599124022ADFEA2003EBD21 /* JSContext+LinkBlock.m */,
 				4599124122ADFEA2003EBD21 /* JSManagedValue+LinkBlock.h */,
+				4599123D22ADFEA2003EBD21 /* JSManagedValue+LinkBlock.m */,
+				4599123B22ADFEA2003EBD21 /* JSValue+LinkBlock.h */,
+				4599123F22ADFEA2003EBD21 /* JSValue+LinkBlock.m */,
 			);
 			path = JavaScriptCore;
 			sourceTree = "<group>";
@@ -351,8 +351,8 @@
 		4599126122ADFEA2003EBD21 /* Object */ = {
 			isa = PBXGroup;
 			children = (
-				4599126722ADFEA2003EBD21 /* LBBlakObject.h */,
-				4599126E22ADFEA2003EBD21 /* LBBlakObject.m */,
+				4599126722ADFEA2003EBD21 /* LBNil.h */,
+				4599126E22ADFEA2003EBD21 /* LBNil.m */,
 				4599126222ADFEA2003EBD21 /* LinkBlockDefine.h */,
 				4599126D22ADFEA2003EBD21 /* LinkBlockInvocation.h */,
 				4599126622ADFEA2003EBD21 /* LinkBlockInvocation.m */,
@@ -569,9 +569,9 @@
 				4599129422ADFEA2003EBD21 /* NSDictionary+LinkBlock.m in Sources */,
 				4599127E22ADFEA2003EBD21 /* UIImageView+LinkBlock.m in Sources */,
 				4599129022ADFEA2003EBD21 /* NSIndexPath+LinkBlock.m in Sources */,
-				459912A322ADFEA2003EBD21 /* LBBlakObject.m in Sources */,
+				459912A322ADFEA2003EBD21 /* LBNil.m in Sources */,
 				4599128822ADFEA2003EBD21 /* CALayer+LinkBlock.m in Sources */,
-				4599129922ADFEA2003EBD21 /* Others+LinkBlock.m in Sources */,
+				4599129922ADFEA2003EBD21 /* Deprecated+LinkBlock.m in Sources */,
 				459912A422ADFEA2003EBD21 /* LinkObject.m in Sources */,
 				4599129E22ADFEA2003EBD21 /* LinkHelper.m in Sources */,
 				4599129522ADFEA2003EBD21 /* NSDate+LinkBlock.m in Sources */,

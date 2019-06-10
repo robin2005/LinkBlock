@@ -6,12 +6,12 @@
 //  Copyright © 2018 Meterwhite. All rights reserved.
 //
 
+#import "Deprecated+LinkBlock.h"
 #import "LinkBlockDefine.h"
-#import "LinkInfo.h"
-#import "LinkGroup.h"
-#import "LinkError.h"
 #import "LinkReturn.h"
-#import "Others+LinkBlock.h"
+#import "LinkError.h"
+#import "LinkGroup.h"
+#import "LinkInfo.h"
 
 
 @interface NSObject(LinkObject)

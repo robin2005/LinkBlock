@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 Meterwhite. All rights reserved.
 //
 
-#import "LBBlakObject.h"
+#import "LBNil.h"
 #import "LinkBlock.h"
 
 @implementation NSObject(NSDateLinkBlock)
@@ -114,7 +114,7 @@
     return ^id(NSString* formatStr){
         LinkHandle_REF(NSDate)
         LinkGroupHandle_REF(dateToStrWithFormat,formatStr)
-        if(LBEqualBlakObject(formatStr) || ![formatStr isKindOfClass:[NSString class]])
+        if(LBEqualNil(formatStr) || ![formatStr isKindOfClass:[NSString class]])
             return [_self description];
         NSDateFormatter* fmt=  [NSDateFormatter new];
         fmt.dateFormat= formatStr;

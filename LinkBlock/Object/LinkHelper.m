@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 #import "LinkBlock.h"
 #import "LinkHelper.h"
-#import "LBBlakObject.h"
+#import "LBNil.h"
 
 @interface LinkHelper<__covariant ObjectType>()
 @property (nonatomic,strong) id target;
@@ -25,7 +25,7 @@
 
 - (id)blockPropertyFromObjectByPropertyName:(NSString *)propertyName
 {
-    if(LBEqualBlakObject(self.target)) return nil;
+    if(LBEqualNil(self.target)) return nil;
     
     SEL sel = NSSelectorFromString(propertyName);
     //可响应

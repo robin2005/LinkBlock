@@ -1,22 +1,43 @@
 //
-//  LBBlakObject.m
+//  LBNil.m
 //  LinkBlockProgram
 //
 //  Created by Meterwhite on 2017/12/28.
 //  Copyright © 2017年 Meterwhite. All rights reserved.
 //
 
-#import "LBBlakObject.h"
-#import <os/lock.h>
+
 #import <objc/runtime.h>
+#import "LBNil.h"
+
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_10_0 \
+|| MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_12 \
+|| __TV_OS_VERSION_MIN_REQUIRED >= __TVOS_10_0
+
+#import <os/lock.h>
+#define lb_spinlock_unlock os_unfair_lock_unlock
+#define lb_spinlock_lock os_unfair_lock_lock
+#define lb_spinlock_init OS_UNFAIR_LOCK_INIT
+#define lb_spinlock os_unfair_lock
+#define lb_spinlock_trylock os_unfair_lock_trylock
+#else
+
+#import <libkern/OSAtomic.h>
+#define lb_spinlock_unlock OSSpinLockUnlock
+#define lb_spinlock_init OS_SPINLOCK_INIT
+#define lb_spinlock_lock OSSpinLockLock
+#define lb_spinlock OSSpinLock
+#define lb_spinlock_trylock OSSpinLockTry
+#endif
 
 //系统结构体objc_method_description定义
 typedef struct {
     SEL name;
     const char *types;
-} bh_methodDescription;
+} lb_methodDescription;
 
-Class *bh_copyClassList (unsigned *count) {
+Class *lb_copyClassList (unsigned *count) {
     //获取runtime注册的类的数目
     int classCount = objc_getClassList(NULL, 0);
     if (!classCount) {
@@ -29,10 +50,9 @@ Class *bh_copyClassList (unsigned *count) {
     //为所有类分配空间，包括NULL
     Class *allClasses = (Class *)malloc(sizeof(Class) * (classCount + 1));
     if (!allClasses) {
-        fprintf(stderr, "NSBlackHole ERROR: 内存不足\n");
-        if (count)
-            *count = 0;
         
+        fprintf(stderr, "NSBlackHole ERROR: 内存不足\n");
+        if (count) *count = 0;
         return NULL;
     }
     
@@ -71,31 +91,31 @@ Class *bh_copyClassList (unsigned *count) {
     return allClasses;
 }
 
-NSMethodSignature *bh_globalMethodSignatureForSelector (SEL aSelector) {
+NSMethodSignature *lb_globalMethodSignatureForSelector (SEL aSelector) {
     NSCParameterAssert(aSelector != NULL);
     
     //创建缓存散列
     static const size_t selectorCacheLength = 1 << 8;
     static const uintptr_t selectorCacheMask = (selectorCacheLength - 1);
-    static bh_methodDescription volatile methodDescriptionCache[selectorCacheLength];
+    static lb_methodDescription volatile methodDescriptionCache[selectorCacheLength];
     
     uintptr_t hash = (uintptr_t)((void *)aSelector) & selectorCacheMask;
-    bh_methodDescription methodDesc;
+    lb_methodDescription methodDesc;
     
-    static os_unfair_lock lock = OS_UNFAIR_LOCK_INIT;
+    static lb_spinlock lock = lb_spinlock_init;
     
-    os_unfair_lock_lock(&lock);
+    lb_spinlock_lock(&lock);
     methodDesc = methodDescriptionCache[hash];
-    os_unfair_lock_unlock(&lock);
+    lb_spinlock_unlock(&lock);
     
     if (methodDesc.name == aSelector) {
         return [NSMethodSignature signatureWithObjCTypes:methodDesc.types];
     }
     
-    methodDesc = (bh_methodDescription){.name = NULL, .types = NULL};
+    methodDesc = (lb_methodDescription){.name = NULL, .types = NULL};
     
     uint classCount = 0;
-    Class *classes = bh_copyClassList(&classCount);
+    Class *classes = lb_copyClassList(&classCount);
     
     if (classes) {
         @autoreleasepool {
@@ -109,7 +129,7 @@ NSMethodSignature *bh_globalMethodSignatureForSelector (SEL aSelector) {
                 
                 if (method) {
                     
-                    methodDesc = (bh_methodDescription){.name = aSelector
+                    methodDesc = (lb_methodDescription){.name = aSelector
                         , .types = method_getTypeEncoding(method)};
                     
                     break;
@@ -131,7 +151,7 @@ NSMethodSignature *bh_globalMethodSignatureForSelector (SEL aSelector) {
                     objcMethodDesc = protocol_getMethodDescription(protocols[i], aSelector, NO, NO);
                 
                 if (objcMethodDesc.name) {
-                    methodDesc = (bh_methodDescription){.name = objcMethodDesc.name, .types = objcMethodDesc.types};
+                    methodDesc = (lb_methodDescription){.name = objcMethodDesc.name, .types = objcMethodDesc.types};
                     break;
                 }
             }
@@ -141,10 +161,12 @@ NSMethodSignature *bh_globalMethodSignatureForSelector (SEL aSelector) {
     
     if (methodDesc.name) {
         
-        if (os_unfair_lock_trylock(&lock)) {
+        if (lb_spinlock_trylock(&lock)) {
             methodDescriptionCache[hash] = methodDesc;
-            os_unfair_lock_unlock(&lock);
+            lb_spinlock_unlock(&lock);
         }
+        
+        
         
         /*
          有一些复杂的系统类型编码会导致-signatureWithObjCTypes:调用失败。
@@ -152,17 +174,18 @@ NSMethodSignature *bh_globalMethodSignatureForSelector (SEL aSelector) {
         */
         return [NSMethodSignature signatureWithObjCTypes:methodDesc.types];
     } else {
+        
         return nil;
     }
 }
 
-@implementation LBBlakClass
+@implementation LBNilObject
 
 static id _self = nil;
 
 + (void)initialize
 {
-    if(self == [LBBlakClass class]){
+    if(self == [LBNilObject class]){
         if(!_self){
             _self = [self alloc];
         }
@@ -198,7 +221,7 @@ static id _self = nil;
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector
 {
-    return bh_globalMethodSignatureForSelector(selector);
+    return lb_globalMethodSignatureForSelector(selector);
 }
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation

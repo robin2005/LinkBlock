@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 #import "LinkHelper.h"
 #import "LinkBlock.h"
-#import "LBBlakObject.h"
+#import "LBNil.h"
 
 #ifndef _LB_performSelector
 #define _LB_performSelector(target , selector) \
@@ -1447,7 +1447,7 @@
     return ^id(id obj){
         LinkHandle_REF(NSObject)
         LinkGroupHandle_REF(objRemoveFrom , obj)
-        if(LBEqualBlakObject(obj)) return _self;
+        if(LBEqualNil(obj)) return _self;
         
         if([obj respondsToSelector:@selector(removeObject:)]){
             

@@ -1850,7 +1850,7 @@ defineViewContentModeTail(BottomRight)
     return ^id(){
         LinkHandle_REF(UIView)
         LinkGroupHandle_REF(viewPrevIndexView)
-        return _self.objBeforeInArr(_self.subviews);
+        return _self.objGetPrevItemFromObjs(_self.subviews);
     };
 }
 
