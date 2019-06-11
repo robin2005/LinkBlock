@@ -11,6 +11,7 @@
 #ifndef UIBezierPathNew
 #define UIBezierPathNew ([UIBezierPath bezierPath])
 #endif
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIBezierPathLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -33,3 +34,4 @@
 @property LB_BK UIBezierPath*    (^bezierPathStroke)(void);
 @property LB_BK UIBezierPath*    (^bezierPathAddClip)(void);
 @end
+NS_ASSUME_NONNULL_END

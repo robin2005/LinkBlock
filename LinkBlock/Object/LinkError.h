@@ -11,6 +11,7 @@
  LinkError can response to unknown method and not crash.This feature make linkBlock more safe.When unknown method called it will do noting but log itself./
  可以响应未知方法而不崩溃，响应未知方法时会打印错误信息
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LinkError : LinkInfo
 @property (nonatomic,copy) NSString* needClass;
 @property (nonatomic,copy) NSString* errorClass;
@@ -22,3 +23,4 @@
 - (NSString *)debugDescription;
 - (instancetype)logError;
 @end
+NS_ASSUME_NONNULL_END

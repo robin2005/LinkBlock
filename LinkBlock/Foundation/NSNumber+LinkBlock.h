@@ -8,6 +8,7 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSNumberLinkBlock)
 
 #pragma mark - Foundation Speed/速度
@@ -85,7 +86,9 @@
 @property LB_BK NSObject*    (^numAsIndexToGetValueFromObj)(id obj);
 
 @end
+NS_ASSUME_NONNULL_END
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSNumber (NSNumberLinkBlock)
 
 /** for循环，正序遍历 [0,idx) */
@@ -93,3 +96,4 @@
 /** for循环，倒序遍历 (idx,0] */
 - (void)numForLoopDESC:(void(^)(int idx))forBlock;
 @end
+NS_ASSUME_NONNULL_END

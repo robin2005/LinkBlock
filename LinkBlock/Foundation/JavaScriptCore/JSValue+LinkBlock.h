@@ -8,8 +8,10 @@
 #import "LinkBlockDefine.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(JSValueLinkBlock)
 @property LB_BK JSManagedValue*      (^jsValueToManagedValue)(id owner);
 @property LB_BK JSValue*             (^jsValueAddToSelfManagedRef)(id owner);
 @property LB_BK JSValue*             (^jsValueCallFunc)(NSArray* args);
 @end
+NS_ASSUME_NONNULL_END

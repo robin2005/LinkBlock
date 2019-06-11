@@ -11,13 +11,14 @@
 
 #define NSMutable2DArrayNew(x,y) (LB_2DArray_New(x,y))
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSMutable2DArrayLinkBlock)
 
 /**
  Get value from item of 2DArray. NSNull will instead with nil.
  ...m2DArraryObjectAt(x,y).thisValueFor2DArray;
  */
-@property LB_FN id thisValueFor2DArray;
+@property LB_FN id _Nullable thisValueFor2DArray;
 
 /**
  ...m2DArraryCountAs().anUnsignedIntegerNumber...
@@ -52,11 +53,12 @@
 @property LB_BK NSObject*   (^m2DArraryCleanObjectsForCol)(NSUInteger col);
 
 @end
+NS_ASSUME_NONNULL_END
 
 
 
 
-NS_INLINE NSMutableArray* LB_2DArray_New(NSUInteger x,NSUInteger y){
+NS_INLINE NSMutableArray*_Nonnull LB_2DArray_New(NSUInteger x,NSUInteger y){
     
     NSMutableArray* arrayCol = [NSMutableArray arrayWithCapacity:y];
     id nullObj = NSNull.null;

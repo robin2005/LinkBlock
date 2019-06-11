@@ -10,6 +10,7 @@
 
 #define UISearchBarNew ([UISearchBar new])
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UISearchBarLinkBlock)
 @property LB_BK       UISearchBar* (^searchBarText)(NSString* text);
 @property LB_BK       UISearchBar* (^searchBarPlaceholder)(NSString* placeholder);
@@ -27,3 +28,4 @@
 @property LB_BK       UISearchBar* (^searchBarBackgroundImageColor)(UIColor* color);
 @property LB_BK       UISearchBar* (^searchBarPlaceholderColor)(UIColor* color);
 @end
+NS_ASSUME_NONNULL_END

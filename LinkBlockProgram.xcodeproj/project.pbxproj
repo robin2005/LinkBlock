@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13290AA369CB9409B6A3B6E5 /* Pods_LinkBlockProgram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079D0F43F0C66ACFDCE4AC1F /* Pods_LinkBlockProgram.framework */; };
 		453AFBC91D6EFB4E00012095 /* Man.m in Sources */ = {isa = PBXBuildFile; fileRef = 453AFBC61D6EFB4E00012095 /* Man.m */; };
 		453AFBCA1D6EFB4E00012095 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 453AFBC81D6EFB4E00012095 /* Person.m */; };
+		457C4F4922AF477400D014C4 /* LBComLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 457C4F4822AF477400D014C4 /* LBComLib.m */; };
+		457C4F4D22AF785400D014C4 /* SDWebImage+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 457C4F4C22AF785400D014C4 /* SDWebImage+LinkBlock.m */; };
 		4599127322ADFEA2003EBD21 /* UITextField+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599121022ADFEA2003EBD21 /* UITextField+LinkBlock.m */; };
 		4599127422ADFEA2003EBD21 /* UILabel+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599121522ADFEA2003EBD21 /* UILabel+LinkBlock.m */; };
 		4599127522ADFEA2003EBD21 /* UIControl+LinkBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4599121622ADFEA2003EBD21 /* UIControl+LinkBlock.m */; };
@@ -78,10 +81,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		079D0F43F0C66ACFDCE4AC1F /* Pods_LinkBlockProgram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LinkBlockProgram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DD25F5F0DA37DBE06EC01B4 /* Pods-LinkBlockProgram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinkBlockProgram.debug.xcconfig"; path = "Target Support Files/Pods-LinkBlockProgram/Pods-LinkBlockProgram.debug.xcconfig"; sourceTree = "<group>"; };
 		453AFBC51D6EFB4E00012095 /* Man.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Man.h; sourceTree = "<group>"; };
 		453AFBC61D6EFB4E00012095 /* Man.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Man.m; sourceTree = "<group>"; };
 		453AFBC71D6EFB4E00012095 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		453AFBC81D6EFB4E00012095 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		457C4F4722AF477400D014C4 /* LBComLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBComLib.h; sourceTree = "<group>"; };
+		457C4F4822AF477400D014C4 /* LBComLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBComLib.m; sourceTree = "<group>"; };
+		457C4F4B22AF785400D014C4 /* SDWebImage+LinkBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SDWebImage+LinkBlock.h"; sourceTree = "<group>"; };
+		457C4F4C22AF785400D014C4 /* SDWebImage+LinkBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SDWebImage+LinkBlock.m"; sourceTree = "<group>"; };
 		4599120822ADFEA2003EBD21 /* LinkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkObject.h; sourceTree = "<group>"; };
 		4599120A22ADFEA2003EBD21 /* UIScrollView+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LinkBlock.h"; sourceTree = "<group>"; };
 		4599120B22ADFEA2003EBD21 /* UITextView+LinkBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+LinkBlock.h"; sourceTree = "<group>"; };
@@ -197,6 +206,7 @@
 		9FFDA2251B835E2F0044097D /* LinkBlockProgramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinkBlockProgramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FFDA22A1B835E2F0044097D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FFDA22B1B835E2F0044097D /* LinkBlockProgramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LinkBlockProgramTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EE4B51F16849AD5D7EA1F2DA /* Pods-LinkBlockProgram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinkBlockProgram.release.xcconfig"; path = "Target Support Files/Pods-LinkBlockProgram/Pods-LinkBlockProgram.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13290AA369CB9409B6A3B6E5 /* Pods_LinkBlockProgram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +239,17 @@
 			path = TestClass;
 			sourceTree = "<group>";
 		};
+		457C4F4622AF45E000D014C4 /* ComLib */ = {
+			isa = PBXGroup;
+			children = (
+				457C4F4B22AF785400D014C4 /* SDWebImage+LinkBlock.h */,
+				457C4F4C22AF785400D014C4 /* SDWebImage+LinkBlock.m */,
+				457C4F4722AF477400D014C4 /* LBComLib.h */,
+				457C4F4822AF477400D014C4 /* LBComLib.m */,
+			);
+			path = ComLib;
+			sourceTree = "<group>";
+		};
 		4599120722ADFEA2003EBD21 /* LinkBlock */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +258,7 @@
 				4599127222ADFEA2003EBD21 /* LinkObject.m */,
 				4599124422ADFEA2003EBD21 /* Deprecated+LinkBlock.h */,
 				4599125922ADFEA2003EBD21 /* Deprecated+LinkBlock.m */,
+				457C4F4622AF45E000D014C4 /* ComLib */,
 				4599123622ADFEA2003EBD21 /* Foundation */,
 				4599120922ADFEA2003EBD21 /* UIKit */,
 				4599126122ADFEA2003EBD21 /* Object */,
@@ -370,12 +393,31 @@
 			path = Object;
 			sourceTree = "<group>";
 		};
+		46CE6DDD754253F9CA8BE49C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				079D0F43F0C66ACFDCE4AC1F /* Pods_LinkBlockProgram.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C97FC884B498C7E87663D01 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0DD25F5F0DA37DBE06EC01B4 /* Pods-LinkBlockProgram.debug.xcconfig */,
+				EE4B51F16849AD5D7EA1F2DA /* Pods-LinkBlockProgram.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9FFDA2031B835E2F0044097D = {
 			isa = PBXGroup;
 			children = (
 				9FFDA20E1B835E2F0044097D /* LinkBlockProgram */,
 				9FFDA2281B835E2F0044097D /* LinkBlockProgramTests */,
 				9FFDA20D1B835E2F0044097D /* Products */,
+				9C97FC884B498C7E87663D01 /* Pods */,
+				46CE6DDD754253F9CA8BE49C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -437,9 +479,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FFDA22F1B835E2F0044097D /* Build configuration list for PBXNativeTarget "LinkBlockProgram" */;
 			buildPhases = (
+				468F388A51444C871D3D041F /* [CP] Check Pods Manifest.lock */,
 				9FFDA2081B835E2F0044097D /* Sources */,
 				9FFDA2091B835E2F0044097D /* Frameworks */,
 				9FFDA20A1B835E2F0044097D /* Resources */,
+				7E50B0254E85ABF2A3CC6CF8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -524,12 +568,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		468F388A51444C871D3D041F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LinkBlockProgram-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E50B0254E85ABF2A3CC6CF8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LinkBlockProgram/Pods-LinkBlockProgram-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LinkBlockProgram/Pods-LinkBlockProgram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9FFDA2081B835E2F0044097D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4599128B22ADFEA2003EBD21 /* JSManagedValue+LinkBlock.m in Sources */,
+				457C4F4922AF477400D014C4 /* LBComLib.m in Sources */,
 				4599128022ADFEA2003EBD21 /* UITextView+LinkBlock.m in Sources */,
 				4599127822ADFEA2003EBD21 /* UIImage+LinkBlock.m in Sources */,
 				453AFBCA1D6EFB4E00012095 /* Person.m in Sources */,
@@ -573,6 +661,7 @@
 				4599128822ADFEA2003EBD21 /* CALayer+LinkBlock.m in Sources */,
 				4599129922ADFEA2003EBD21 /* Deprecated+LinkBlock.m in Sources */,
 				459912A422ADFEA2003EBD21 /* LinkObject.m in Sources */,
+				457C4F4D22AF785400D014C4 /* SDWebImage+LinkBlock.m in Sources */,
 				4599129E22ADFEA2003EBD21 /* LinkHelper.m in Sources */,
 				4599129522ADFEA2003EBD21 /* NSDate+LinkBlock.m in Sources */,
 				459912A222ADFEA2003EBD21 /* LinkError.m in Sources */,
@@ -713,6 +802,7 @@
 		};
 		9FFDA2301B835E2F0044097D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DD25F5F0DA37DBE06EC01B4 /* Pods-LinkBlockProgram.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -729,6 +819,7 @@
 		};
 		9FFDA2311B835E2F0044097D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE4B51F16849AD5D7EA1F2DA /* Pods-LinkBlockProgram.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

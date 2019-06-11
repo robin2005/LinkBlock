@@ -9,6 +9,7 @@
 #import "LinkBlockDefine.h"
 
 #define UITableViewNew ([UITableView new])
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UITableViewLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -23,3 +24,4 @@
 @property LB_BK UITableView*       (^tab_viewCellSeparatorStyleSingleLine)(void);
 
 @end
+NS_ASSUME_NONNULL_END

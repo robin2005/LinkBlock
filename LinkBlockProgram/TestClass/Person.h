@@ -8,9 +8,10 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @protocol PersonDelegate <NSObject>
 
-- (id)delegatePerson:(id)info;
+- (id _Nullable )delegatePerson:(id)info;
 
 @end
 
@@ -39,3 +40,4 @@
 - (NSString*)answerQuestion:(NSString*)question question2:(NSString*)q2 question3:(NSString*)question3;
 - (double)compute:(double)num1 num2:(double)num2;
 @end
+NS_ASSUME_NONNULL_END

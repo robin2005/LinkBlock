@@ -12,6 +12,7 @@ typedef NS_OPTIONS(NSUInteger, LinkGroupHandleType) {
     LinkGroupHandleTypeNone                 = 0,
 };
 
+NS_ASSUME_NONNULL_BEGIN
 @interface LinkGroup : LinkInfo
 @property (nonatomic,strong) NSMutableArray<NSObject*>* linkObjects;
 
@@ -20,3 +21,4 @@ typedef NS_OPTIONS(NSUInteger, LinkGroupHandleType) {
 + (LinkGroup*)groupWithObjs:(id)obj0 args:(va_list)args;
 + (LinkGroup*)groupWithArr:(NSArray*)obj;
 @end
+NS_ASSUME_NONNULL_END

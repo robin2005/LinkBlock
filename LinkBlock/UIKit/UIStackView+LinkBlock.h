@@ -10,6 +10,7 @@
 
 #define UIStackViewNew ([UIStackView new])
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIStackViewLinkBlock)
 
 
@@ -59,3 +60,4 @@
 
 
 @end
+NS_ASSUME_NONNULL_END

@@ -48,6 +48,9 @@
 #import "UITableViewCell+LinkBlock.h"
 #import "UIViewController+LinkBlock.h"
 
+///ComLib
+#import "SDWebImage+LinkBlock.h"
+
 //////////////////////////
 //MARK:Basic
 //////////////////////////

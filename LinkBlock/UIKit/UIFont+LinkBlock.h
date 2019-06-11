@@ -10,6 +10,7 @@
 
 #define UIFontNew(size) ([UIFont systemFontOfSize:size])
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIFontLinkBlock)
 
 #pragma mark - Weak coding/弱类型编码
@@ -20,3 +21,4 @@
 @property LB_BK CGFloat       (^fontHeightWithLine)(NSUInteger line);
 
 @end
+NS_ASSUME_NONNULL_END

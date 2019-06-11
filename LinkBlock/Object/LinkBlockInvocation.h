@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-NS_ASSUME_NONNULL_BEGIN
-
 
 /**
  NSInvocation object in block form
  block形式的NSInvocation对象
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface LinkBlockInvocation : NSObject
 
 /**
@@ -62,5 +61,5 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)invoke;
 - (void)invokeWithTarget:(id)target;
 @end
-
 NS_ASSUME_NONNULL_END
+

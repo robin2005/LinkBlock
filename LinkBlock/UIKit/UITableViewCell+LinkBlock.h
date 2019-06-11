@@ -8,6 +8,7 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UITableViewCellLinkBlock)
 #pragma mark - Foundation Speed/速度
 @property LB_BK UITableViewCell* (^tab_cellSelectionStyleNone)(void);
@@ -15,3 +16,4 @@
 @property LB_BK UITableViewCell* (^tab_cellSelectionStyleGray)(void);
 @property LB_BK UITableViewCell* (^tab_cellSelectionStyleDefault)(void);
 @end
+NS_ASSUME_NONNULL_END

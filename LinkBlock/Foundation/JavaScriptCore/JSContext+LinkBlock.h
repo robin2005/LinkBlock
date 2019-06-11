@@ -8,6 +8,7 @@
 #import "LinkBlockDefine.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(JSContextLinkBlock)
 
 #pragma mark - Foundation Speed/速度
@@ -32,3 +33,4 @@
 /** page ∈ {-1,0,1,2...} */
 @property LB_BK JSContext*   (^jsContextHistoryGo)(NSString* page);
 @end
+NS_ASSUME_NONNULL_END

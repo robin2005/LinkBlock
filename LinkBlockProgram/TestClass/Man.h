@@ -8,6 +8,7 @@
 
 #import "Person.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface Man : Person<NSCopying>
 @property (nonatomic,strong) Man* son;
 @property (nonatomic,strong) NSArray<Person*>* family;
@@ -16,3 +17,4 @@
 @property (nonatomic,assign) SEL mySEL;
 
 @end
+NS_ASSUME_NONNULL_END

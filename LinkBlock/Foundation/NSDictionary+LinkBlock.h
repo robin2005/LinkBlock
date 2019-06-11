@@ -7,6 +7,7 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSDictionaryLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -41,3 +42,4 @@
 @property LB_BK NSMutableDictionary* (^dictReplaceForKey)(id key, id newKey);
 
 @end
+NS_ASSUME_NONNULL_END

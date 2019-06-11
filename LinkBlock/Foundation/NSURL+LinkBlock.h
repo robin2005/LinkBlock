@@ -8,6 +8,7 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSURLLinkBlock)
 /** url of system photo lib to UIImage.Thumbnail/缩略图 */
 @property LB_BK UIImage*         (^urlAssetsToUIImageByThumbnail)(void);
@@ -17,3 +18,4 @@
 @property LB_BK UIImage*         (^urlAssetsToUIImageByFullScreen)(void);
 @property LB_BK NSData*          (^urlToNSDataFromContents)(void);
 @end
+NS_ASSUME_NONNULL_END

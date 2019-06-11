@@ -36,6 +36,7 @@
 /**
  include CAAnimation，CAPropertyAnimation，CABasicAnimation，CAKeyframeAnimation，CASpringAnimation的扩展
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(CAAnimationsLinkBlock)
 #pragma mark - Foundation Mirror/镜像
 #pragma mark -- CAAnimation
@@ -74,3 +75,4 @@
 #pragma mark -- CAAnimationGroup
 @property LB_BK CAAnimationGroup*         (^animationGroupAnimations)(NSArray<CAAnimation *> *animations);
 @end
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,7 @@
 
 #define UIButtonNew ([UIButton buttonWithType:UIButtonTypeCustom])
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIButtonLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -69,10 +70,12 @@
 @property LB_BK UIButton* (^btnHighlightedTitleColorDarkByNormalState)(void);
 
 @end
+NS_ASSUME_NONNULL_END
 
 
 
 
+NS_ASSUME_NONNULL_BEGIN
 @interface UIButton(UIButtonLinkBlock)
 /**
  *  extend touch range
@@ -80,4 +83,5 @@
 @property LB_BK UIButton* (^btnExtensionOfTouchSide)(UIEdgeInsets insets);
 @property LB_BK UIButton* (^btnExtensionOfTouchRects)(NSArray<NSString*>* rects);
 @end
+NS_ASSUME_NONNULL_END
 

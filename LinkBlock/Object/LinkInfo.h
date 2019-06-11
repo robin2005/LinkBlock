@@ -15,6 +15,7 @@ typedef enum LinkInfoType{
     LinkInfoReturn
 }LinkInfoType;
 
+NS_ASSUME_NONNULL_BEGIN
 @interface LinkInfo : NSObject
 {
     @protected
@@ -27,3 +28,4 @@ typedef enum LinkInfoType{
 - (void)cleanUserInfo;
 
 @end
+NS_ASSUME_NONNULL_END

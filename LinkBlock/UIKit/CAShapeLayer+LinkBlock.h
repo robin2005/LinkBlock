@@ -11,6 +11,7 @@
 #ifndef CAShapeLayerNew
 #define CAShapeLayerNew ([CAShapeLayer layer])
 #endif
+NS_ASSUME_NONNULL_BEGIN
 @interface  NSObject(CAShapeLayerLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -27,3 +28,4 @@
 @property LB_BK CAShapeLayer*    (^sharpLayerSetLineDashPhase)(CGFloat lineDashPhase);
 @property LB_BK CAShapeLayer*    (^sharpLayerSetLineDashPattern)(NSArray<NSNumber *> *lineDashPattern);
 @end
+NS_ASSUME_NONNULL_END

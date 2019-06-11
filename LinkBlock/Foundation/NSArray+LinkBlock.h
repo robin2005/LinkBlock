@@ -11,6 +11,7 @@
 #endif
 
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSArraryLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -72,9 +73,9 @@
 /** Add object only one */
 @property LB_BK NSMutableArray*  (^arrAddObjUnique)(id obj);
 /** Insert before */
-@property LB_BK NSMutableArray*  (^arrInsertObjBefore)(id insert, id beforThis);
+@property LB_BK NSMutableArray*  (^arrInsertObjBefore)(id insert, id beforTo);
 /** Insert next */
-@property LB_BK NSMutableArray*  (^arrInsertObjNextTo)(id insert, id nextToThis);
+@property LB_BK NSMutableArray*  (^arrInsertObjNextTo)(id insert, id nextTo);
 /** Previous item */
 @property LB_BK NSObject*        (^arrGetPrevItemForObj)(id obj);
 /** Next item */
@@ -123,7 +124,9 @@
  */
 @property LB_BK NSArray*                (^arrConstraintsActiveByPriority)(id asPrioriry);
 @end
+NS_ASSUME_NONNULL_END
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSArray<__covariant ObjectType>(NSArraryLinkBlock)
 
 - (NSMutableArray<ObjectType>*)arrFindUsingBlock:
@@ -140,3 +143,4 @@ NS_DEPRECATED_IOS(2_0, 2_0, "deprecated");
  */
 - (void)arrStringEnumerateComposedInString:(NSString *)string usingBlock:(void (^)(NSString *subString, NSRange range, BOOL isCustom, BOOL *stop))block;
 @end
+NS_ASSUME_NONNULL_END

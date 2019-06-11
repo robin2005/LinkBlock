@@ -313,3 +313,123 @@ NS_INLINE bool LB_TypeEncodingsPassingCheck(const char* fromType , const char* t
     return false;
 }
 
+#define submacro_lb_tli0
+#define submacro_lb_tli1(...)       __typeof__(submacro_lb_at(0,__VA_ARGS__))
+#define submacro_lb_tli2(...)       submacro_lb_tli1(__VA_ARGS__),  __typeof__(submacro_lb_at(1,__VA_ARGS__))
+#define submacro_lb_tli3(...)       submacro_lb_tli2(__VA_ARGS__),  __typeof__(submacro_lb_at(2,__VA_ARGS__))
+#define submacro_lb_tli4(...)       submacro_lb_tli3(__VA_ARGS__),  __typeof__(submacro_lb_at(3,__VA_ARGS__))
+#define submacro_lb_tli5(...)       submacro_lb_tli4(__VA_ARGS__),  __typeof__(submacro_lb_at(4,__VA_ARGS__))
+#define submacro_lb_tli6(...)       submacro_lb_tli5(__VA_ARGS__),  __typeof__(submacro_lb_at(5,__VA_ARGS__))
+#define submacro_lb_tli7(...)       submacro_lb_tli6(__VA_ARGS__),  __typeof__(submacro_lb_at(6,__VA_ARGS__))
+#define submacro_lb_tli8(...)       submacro_lb_tli7(__VA_ARGS__),  __typeof__(submacro_lb_at(7,__VA_ARGS__))
+#define submacro_lb_tli9(...)       submacro_lb_tli8(__VA_ARGS__),  __typeof__(submacro_lb_at(8,__VA_ARGS__))
+#define submacro_lb_tli10(...)      submacro_lb_tli9(__VA_ARGS__),  __typeof__(submacro_lb_at(9,__VA_ARGS__))
+#define submacro_lb_tli11(...)      submacro_lb_tli10(__VA_ARGS__), __typeof__(submacro_lb_at(10,__VA_ARGS__))
+#define submacro_lb_tli12(...)      submacro_lb_tli11(__VA_ARGS__), __typeof__(submacro_lb_at(11,__VA_ARGS__))
+#define submacro_lb_tli13(...)      submacro_lb_tli12(__VA_ARGS__), __typeof__(submacro_lb_at(12,__VA_ARGS__))
+#define submacro_lb_tli14(...)      submacro_lb_tli13(__VA_ARGS__), __typeof__(submacro_lb_at(13,__VA_ARGS__))
+#define submacro_lb_tli15(...)      submacro_lb_tli14(__VA_ARGS__), __typeof__(submacro_lb_at(14,__VA_ARGS__))
+#define submacro_lb_tli16(...)      submacro_lb_tli15(__VA_ARGS__), __typeof__(submacro_lb_at(15,__VA_ARGS__))
+#define submacro_lb_tli17(...)      submacro_lb_tli16(__VA_ARGS__), __typeof__(submacro_lb_at(16,__VA_ARGS__))
+#define submacro_lb_tli18(...)      submacro_lb_tli17(__VA_ARGS__), __typeof__(submacro_lb_at(17,__VA_ARGS__))
+#define submacro_lb_tli19(...)      submacro_lb_tli18(__VA_ARGS__), __typeof__(submacro_lb_at(18,__VA_ARGS__))
+
+
+
+#define submacro_lb_concat_(A, B) A ## B
+
+#define submacro_lb_concat(A, B) \
+submacro_lb_concat_(A, B)
+
+#define submacro_lb_at(N, ...) \
+submacro_lb_concat(submacro_lb_at, N)(__VA_ARGS__)
+
+#define submacro_lb_argcount(...) \
+submacro_lb_at(20, __VA_ARGS__, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+
+#define submacro_lb_if_eq(A, B) \
+submacro_lb_concat(submacro_lb_if_eq, A)(B)
+
+#define submacro_lb_head_(FIRST, ...) FIRST
+
+#define submacro_lb_head(...) \
+submacro_lb_head_(__VA_ARGS__, 0)
+
+// submacro_lb_at expansions
+#define submacro_lb_at0(...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at1(_0, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at2(_0, _1, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at3(_0, _1, _2, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at4(_0, _1, _2, _3, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at5(_0, _1, _2, _3, _4, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at6(_0, _1, _2, _3, _4, _5, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at7(_0, _1, _2, _3, _4, _5, _6, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at8(_0, _1, _2, _3, _4, _5, _6, _7, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at9(_0, _1, _2, _3, _4, _5, _6, _7, _8, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at10(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at11(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at12(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at13(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at14(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at15(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at16(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at17(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at18(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at19(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, ...) submacro_lb_head(__VA_ARGS__)
+#define submacro_lb_at20(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, ...) submacro_lb_head(__VA_ARGS__)
+
+
+#define submacro_lb_consume_(...)
+
+#define submacro_lb_expand_(...) __VA_ARGS__
+
+#define submacro_lb_dec(VAL) \
+submacro_lb_at(VAL, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19)
+
+// ak_if_eq expansions
+#define submacro_lb_if_eq0(VALUE) \
+submacro_lb_concat(submacro_lb_if_eq0_, VALUE)
+
+#define submacro_lb_if_eq0_0(...) __VA_ARGS__ submacro_lb_consume_
+#define submacro_lb_if_eq0_1(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_2(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_3(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_4(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_5(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_6(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_7(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_8(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_9(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_10(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_11(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_12(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_13(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_14(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_15(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_16(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_17(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_18(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_19(...) submacro_lb_expand_
+#define submacro_lb_if_eq0_20(...) submacro_lb_expand_
+
+#define submacro_lb_if_eq1(VALUE) submacro_lb_if_eq0(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq2(VALUE) submacro_lb_if_eq1(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq3(VALUE) submacro_lb_if_eq2(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq4(VALUE) submacro_lb_if_eq3(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq5(VALUE) submacro_lb_if_eq4(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq6(VALUE) submacro_lb_if_eq5(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq7(VALUE) submacro_lb_if_eq6(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq8(VALUE) submacro_lb_if_eq7(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq9(VALUE) submacro_lb_if_eq8(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq10(VALUE) submacro_lb_if_eq9(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq11(VALUE) submacro_lb_if_eq10(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq12(VALUE) submacro_lb_if_eq11(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq13(VALUE) submacro_lb_if_eq12(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq14(VALUE) submacro_lb_if_eq13(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq15(VALUE) submacro_lb_if_eq14(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq16(VALUE) submacro_lb_if_eq15(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq17(VALUE) submacro_lb_if_eq16(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq18(VALUE) submacro_lb_if_eq17(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq19(VALUE) submacro_lb_if_eq18(submacro_lb_dec(VALUE))
+#define submacro_lb_if_eq20(VALUE) submacro_lb_if_eq19(submacro_lb_dec(VALUE))
+

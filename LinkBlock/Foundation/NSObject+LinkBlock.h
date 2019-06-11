@@ -8,6 +8,7 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(LinkBlockNSObject)
 
 #pragma mark - Foundation Mirror
@@ -22,12 +23,12 @@
 
 @property LB_BK BOOL         (^objIsRespondsSEL)(SEL sel);
 @property LB_BK NSNumber*    (^objIsRespondsSELAs)(SEL sel);
-@property LB_BK BOOL         (^objIsKindOf)( __unsafe_unretained Class clazz);
-@property LB_BK NSNumber*    (^objIsKindOfAs)( __unsafe_unretained Class clazz);
-@property LB_BK BOOL         (^objIsSubClassOf)( __unsafe_unretained Class clazz);
-@property LB_BK NSNumber*    (^objIsSubClassOfAs)( __unsafe_unretained Class clazz);
-@property LB_BK BOOL         (^objIsMemberOfClass)( __unsafe_unretained Class clazz);
-@property LB_BK NSNumber*    (^objIsMemberOfClassAs)( __unsafe_unretained Class clazz);
+@property LB_BK BOOL         (^objIsKindOf)( Class clazz);
+@property LB_BK NSNumber*    (^objIsKindOfAs)( Class clazz);
+@property LB_BK BOOL         (^objIsSubClassOf)( Class clazz);
+@property LB_BK NSNumber*    (^objIsSubClassOfAs)( Class clazz);
+@property LB_BK BOOL         (^objIsMemberOfClass)( Class clazz);
+@property LB_BK NSNumber*    (^objIsMemberOfClassAs)( Class clazz);
 
 /** result nil==>NSNull , NSNull.linkEnd == nil */
 @property LB_BK NSObject*    (^objValueForKey)(NSString* key);
@@ -443,3 +444,4 @@
 + (void)lb_classPropertysEnumerateUsingBlock:(void(^)(Class clazz,NSString* propertyName,NSString* propertyType,BOOL* stop))block includeBasic:(BOOL)includeBasic;
 
 @end
+NS_ASSUME_NONNULL_END

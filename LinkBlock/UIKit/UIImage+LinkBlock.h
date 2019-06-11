@@ -7,6 +7,7 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIImageLinkBlock)
 
 #pragma mark - Foundation Speed/速度
@@ -55,3 +56,4 @@
 
 
 @end
+NS_ASSUME_NONNULL_END

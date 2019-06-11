@@ -19,6 +19,7 @@ typedef enum LinkConditionType{
     LinkConditionELSE,
 }LinkConditionType;
 
+NS_ASSUME_NONNULL_BEGIN
 @interface LinkReturn : LinkInfo
 @property (nonatomic,strong) id returnValue;
 @property (nonatomic,assign) LinkReturnType returnType;
@@ -37,3 +38,4 @@ typedef enum LinkConditionType{
 
 - (instancetype)initWithReturnValue:(id)returnValue returnType:(LinkReturnType)returnType conditionType:(LinkConditionType)conditionType;
 @end
+NS_ASSUME_NONNULL_END

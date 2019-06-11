@@ -7,6 +7,7 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSStringLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -200,7 +201,7 @@
 
 #pragma mark - string as path
 /** get file in bundle by name */
-@property LB_BK NSString*    (^strPathByFileNameInBundle)(NSString* type);
+@property LB_BK NSString*    (^strPathByFileNameInBundle)(NSString*_Nullable type);
 @property LB_BK NSString*    (^strPathAppendingComponent)(NSString* component);
 
 @property LB_BK BOOL         (^strPathFileExists)(void);
@@ -250,7 +251,9 @@
 @property LB_BK NSString*            (^strURLDecode)(NSStringEncoding encode);
 
 @end
+NS_ASSUME_NONNULL_END
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSString (NSStringLinkBlock)
 
 - (void)strEnumerateScanIntegerUsingBlock:(void (^)(NSInteger num, NSUInteger idx, BOOL * stop))block;
@@ -261,10 +264,11 @@
 
 - (void)strEnumerateComposedUsingBlock:(void(^)(NSString* string,NSRange range,BOOL *stop))block;
 
-- (NSMutableString*)strEnumerateComposedModifiedUsingBlock:(void(^)(NSString** string,NSRange range,BOOL *stop))block;
+- (NSMutableString*)strEnumerateComposedModifiedUsingBlock:(void(^)(NSString*_Nonnull*_Nonnull string,NSRange range,BOOL *stop))block;
 
 - (void)strEnumerateCustomComposed:(NSString*)regex
                         usingBlock:(void(^)(NSString* string,NSRange range,BOOL isCustom,BOOL *stop))block;
 
-- (NSString *)strEnumerateURLUsingBlock:(void(^)(NSString** urlBeforeKeyValue , NSString** key , NSString** value , BOOL* stop))block;
+- (NSString *)strEnumerateURLUsingBlock:(void(^)(NSString*_Nonnull*_Nonnull urlBeforeKeyValue , NSString*_Nonnull*_Nonnull key , NSString*_Nonnull*_Nonnull value , BOOL* stop))block;
 @end
+NS_ASSUME_NONNULL_END

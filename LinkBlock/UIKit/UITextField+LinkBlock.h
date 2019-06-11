@@ -10,6 +10,7 @@
 
 #define UITextFieldNew ([UITextField new])
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UITextFieldLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -31,3 +32,4 @@
 
 
 @end
+NS_ASSUME_NONNULL_END

@@ -9,6 +9,7 @@
 #import "LinkBlockDefine.h"
 
 #define UITextViewNew ([UITextView new])
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UITextViewLinkBlock)
 #pragma mark - Foundation Mirror/镜像
 @property LB_BK UITextView*        (^txtViewText)(NSString* text);
@@ -25,3 +26,4 @@
 @property LB_BK NSRange            (^txtViewSelectRangeGet)(void);
 
 @end
+NS_ASSUME_NONNULL_END

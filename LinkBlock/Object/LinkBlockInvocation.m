@@ -195,11 +195,11 @@ NS_INLINE BOOL LBTypesCompatible(const char *a, const char *b) {
 {
     return self.argumentsRetained;
 }
-- (id)target
+- (nullable id)target
 {
     return self.invocation.target;
 }
-- (void)setTarget:(id)target
+- (void)setTarget:(nullable id)target
 {
     self.invocation.target = target;
 }

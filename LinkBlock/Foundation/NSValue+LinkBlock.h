@@ -13,6 +13,7 @@
 #endif
 
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSValueLinkBlock)
 #pragma mark - Foundation Speed/速度
 @property LB_BK CGFloat          (^valueCGRectX)(void);
@@ -61,3 +62,4 @@
 @property LB_BK NSValue*         (^valueStructSetValueForKeyPath)(id value,NSString* keyPath);
 
 @end
+NS_ASSUME_NONNULL_END

@@ -9,6 +9,7 @@
 #import "LinkBlockDefine.h"
 
 #define UIViewControllerNew ([UIViewController new])
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIViewControllerLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -34,5 +35,6 @@
 /**
  In this block current controller will be find from "keyWindow.rootViewController".
  */
-@property LB_BK UIViewController*    (^vcpresentedFromCurrentController)(BOOL animated,void(^completion)(void));
+@property LB_BK UIViewController*    (^vcpresentedFromCurrentController)(BOOL animated,void(^_Nullable completion)(void));
 @end
+NS_ASSUME_NONNULL_END

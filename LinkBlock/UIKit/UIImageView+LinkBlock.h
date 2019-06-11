@@ -12,6 +12,7 @@
 
 #define UIImageViewNew ([UIImageView new])
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIImageViewLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -27,7 +28,9 @@
 
 
 @end
+NS_ASSUME_NONNULL_END
 
+NS_ASSUME_NONNULL_BEGIN
 @interface UIImageView(UIImageViewLinkBlock)
 /**
  *  extend touch range
@@ -35,3 +38,4 @@
 @property LB_BK UIImageView* (^img_viewExtensionOfTouchSide)(UIEdgeInsets insets);
 @property LB_BK UIImageView* (^img_viewExtensionOfTouchRects)(NSArray<NSString*>* rects);
 @end
+NS_ASSUME_NONNULL_END

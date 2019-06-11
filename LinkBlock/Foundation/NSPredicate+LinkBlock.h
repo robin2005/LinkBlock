@@ -124,6 +124,7 @@
     ([NSPredicate predicateWithFormat:@"SELF!=%@",NSNull.null])
 
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSPredicateLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -151,3 +152,4 @@
 #pragma mark - LinkBlock
 
 @end
+NS_ASSUME_NONNULL_END

@@ -8,6 +8,7 @@
 #import "LinkBlockDefine.h"
 
 #define UIViewNew ([UIView new])
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIViewLinkBlock)
 
 #pragma mark Foundation Mirror/镜像
@@ -256,7 +257,9 @@ NS_DEPRECATED_IOS(2_0, 7_0, "ios more than 7.0 effective");
 @property LB_BK UIView*      (^viewConstraintFirstBaseline)(CGFloat value);
 
 @end
+NS_ASSUME_NONNULL_END
 
+NS_ASSUME_NONNULL_BEGIN
 @interface UIView (UIViewLinkBlock)
 #pragma mark - For test
 /**
@@ -270,3 +273,4 @@ NS_DEPRECATED_IOS(2_0, 7_0, "ios more than 7.0 effective");
 
 - (void)viewEnumerateSuperviewUsingBlock:(void(^)(UIView* superview,BOOL* stop))block;
 @end
+NS_ASSUME_NONNULL_END

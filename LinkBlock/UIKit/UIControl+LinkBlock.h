@@ -7,6 +7,7 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIControlLinkBlock)
 #pragma mark - Foundation Mirror/镜像
 @property LB_BK UIControl*  (^controlEnable)(BOOL enable);
@@ -33,3 +34,4 @@
 @property LB_BK UIControl*  (^controlContentVerticalAlignmentBottom)(void);
 @property LB_BK UIControl*  (^controlContentVerticalAlignmentFill)(void);
 @end
+NS_ASSUME_NONNULL_END

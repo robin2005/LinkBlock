@@ -10,6 +10,7 @@
 #ifndef NSMutableAttributedStringNew
 #define NSMutableAttributedStringNew ([NSMutableAttributedString new])
 #endif
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSMutableAttributedStringLinkBlock)
 
 @property LB_BK NSMutableAttributedString* (^m_attr_strAppendAttrStr)(NSAttributedString* attrStr);
@@ -58,3 +59,4 @@
 @property LB_BK NSMutableAttributedString* (^m_attr_strSetAttrDict)(NSDictionary* attrDict);
 @property LB_BK UIView* (^m_attr_strSetToControlAsWhatSet)(UIView* ctrl);
 @end
+NS_ASSUME_NONNULL_END

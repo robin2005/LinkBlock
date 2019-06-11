@@ -9,6 +9,7 @@
 
 #define UILabelNew ([UILabel new])
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UILabelLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -34,8 +35,10 @@
 
 
 @end
+NS_ASSUME_NONNULL_END
 
 #pragma mark - LinkBlock
+NS_ASSUME_NONNULL_BEGIN
 @interface UILabel(UILabelLinkBlock)
 /**
  *  extend touch range
@@ -43,3 +46,4 @@
 @property LB_BK UILabel* (^labExtensionOfTouchSide)(UIEdgeInsets insets);
 @property LB_BK UILabel* (^labExtensionOfTouchRects)(NSArray<NSString*>* rects);
 @end
+NS_ASSUME_NONNULL_END

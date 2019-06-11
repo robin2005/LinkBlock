@@ -11,6 +11,7 @@
 #ifndef CALayerNew
 #define CALayerNew ([CALayer layer])
 #endif
+NS_ASSUME_NONNULL_BEGIN
 @interface  NSObject(CALayerLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -48,3 +49,4 @@
 @property LB_BK UIView*      (^layerSetHeight)(CGFloat height);
 
 @end
+NS_ASSUME_NONNULL_END

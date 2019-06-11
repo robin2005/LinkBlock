@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "LinkBlock.h"
-#import "Person.h"
-#import "Man.h"
 
 @interface LinkBlockProgramTests : XCTestCase
 
@@ -31,19 +28,6 @@
 
 - (void)testExample {
     // This is an example of a functional test case.
-//    XCTAssert(YES, @"Pass");
-    
-    Man* m0 = Man.new;m0.name=@"AAA";m0.nickName=@"A";
-    Man* m1 = Man.new;m1.name=@"BBB";m1.nickName=@"B";
-    Man* m2 = Man.new;m2.name=@"CCC";m2.nickName=@"C";
-    Man* m3 = Man.new;m3.name=@"DDD";m3.nickName=@"D";
-
-    m0.objSetValueForFullPath(LBBoxValue(CGSizeMake(10, 12)), @"frame->size");
-    m0.objSetScreenValueForFullPath(@"frame->size->width");
-    
-    m0.po();
-    @"END".nslog();
-    
 }
 
 - (void)testPerformanceExample {
@@ -56,12 +40,3 @@
 }
 
 @end
-
-
-//        int i = 10000000;
-//        while (i--) {
-//            man.objSetValueForFullPath(@"AAA" , @"nickName");//7.070
-//            man.objSetValueForKey(@"AAA" , @"nickName");//5.232
-//            [man setValue:@"AAA" forKey:@"nickName"];//0.708
-//            man.nickName = @"AAA";//0.141
-//        }

@@ -10,6 +10,7 @@
 
 #define NSIndexPathNew(idx) ([NSIndexPath indexPathWithIndex:idx])
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSIndexPathLinkBlock)
 
 #pragma mark - Foundation Mirror/镜像
@@ -28,3 +29,4 @@
 
 
 @end
+NS_ASSUME_NONNULL_END

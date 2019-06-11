@@ -11,6 +11,7 @@
 #define NSMutableDictionaryNew ([NSMutableDictionary new])
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSMutableDictionaryLinkBlock)
 #pragma mark - Foundation Speed/速度
 #pragma  mark - NSAttributeString
@@ -48,4 +49,5 @@
 @property LB_BK NSMutableDictionary* (^makeAttrDictWritingDirection)(NSArray* writingDirection);
 @property LB_BK NSMutableDictionary* (^makeAttrDictVerticalGlyphForm)(NSNumber *num);
 @end
+NS_ASSUME_NONNULL_END
 

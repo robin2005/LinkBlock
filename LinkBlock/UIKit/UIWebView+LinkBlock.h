@@ -11,6 +11,7 @@
 #define UIWebViewNew ([UIWebView new])
 
 @class JSContext;
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIWebViewLinkBlock)
 
 #pragma mark - Foundation Speed/速度
@@ -21,3 +22,4 @@
 @property LB_BK NSString*       (^webViewHTML)(void);
 
 @end
+NS_ASSUME_NONNULL_END

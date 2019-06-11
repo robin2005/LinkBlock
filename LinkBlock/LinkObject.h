@@ -14,6 +14,7 @@
 #import "LinkInfo.h"
 
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(LinkObject)
 #pragma mark ----NSArray----
 /**
@@ -153,25 +154,26 @@
 - (CALayer*)                   asCALayer;
 
 @end
+NS_ASSUME_NONNULL_END
 
 
-NS_INLINE id _LB_MakeObj(id object){
+NS_INLINE id _Nonnull _LB_MakeObj(id _Nullable object){
     return object?object:[LinkError new];
 }
 /**
  End with nil~!
  */
-NS_INLINE LinkInfo* _LB_MakeObjs(id object0, ...){
+NS_INLINE LinkInfo*_Nonnull _LB_MakeObjs(id _Nullable object0, ...){
     if(!object0) return [LinkError new];
     va_list args;
     va_start(args, object0);
     return [LinkGroup groupWithObjs:object0 args:args];
 }
 
-NS_INLINE id _LB_DefaultObj(id obj , id instead){
+NS_INLINE id _Nonnull _LB_DefaultObj(id _Nullable obj , id _Nullable instead){
     return obj?obj:instead;
 }
 
-NS_INLINE id _LB_NotNilObj(id obj){
+NS_INLINE id _Nonnull _LB_NotNilObj(id _Nullable obj){
     return obj?obj:[NSNull null];
 }

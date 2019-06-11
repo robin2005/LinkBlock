@@ -8,6 +8,7 @@
 
 #import "LinkBlockDefine.h"
 
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(UIColorLinkBlock)
 #pragma mark - Foundation Mirror/镜像
 
@@ -61,3 +62,4 @@
 @property LB_BK UIColor*         (^colorHighlightLightColor)(void);
 
 @end
+NS_ASSUME_NONNULL_END

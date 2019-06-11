@@ -11,7 +11,9 @@
  Each change is retained for 6 months.
  The dprecated method more than 6 months will be deleted!
  */
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(OtherLinkBlock)
 
 @end
+NS_ASSUME_NONNULL_END
 

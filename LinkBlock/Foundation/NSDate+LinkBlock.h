@@ -11,6 +11,7 @@
 #ifndef NSDateNew
 #define NSDateNew ([NSDate date])
 #endif
+NS_ASSUME_NONNULL_BEGIN
 @interface NSObject(NSDateLinkBlock)
 #pragma mark - Foundation Mirror/镜像
 
@@ -81,3 +82,4 @@
 @property LB_BK NSNumber*        (^dateIsInMonthAs)(void);
 
 @end
+NS_ASSUME_NONNULL_END
