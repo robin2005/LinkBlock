@@ -224,18 +224,18 @@ static id _self = nil;
     return lb_globalMethodSignatureForSelector(selector);
 }
 
-- (void)forwardInvocation:(NSInvocation *)anInvocation
+- (void)forwardInvocation:(NSInvocation *)invocation
 {
-    NSUInteger returnLength = [[anInvocation methodSignature] methodReturnLength];
-    if (!returnLength) {
+    NSUInteger len = [[invocation methodSignature] methodReturnLength];
+    if (!len) {
         return;
     }
     
     //返回值填充0
-    char buffer[returnLength];
-    memset(buffer, 0, returnLength);
+    char buffer[len];
+    memset(buffer, 0, len);
     
-    [anInvocation setReturnValue:buffer];
+    [invocation setReturnValue:buffer];
 }
 
 - (BOOL)respondsToSelector:(SEL)selector
